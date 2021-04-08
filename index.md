@@ -1,37 +1,28 @@
-## Welcome to GitHub Pages
+### Hello! 🇬🇧, Bonjour! 🇫🇷, Moien! 🇱🇺, N'Koni! 🇹🇬(Ifè)
+#### I'm Tine, Senior Software Engineer | Team Leader | OSS Maintainer
+![I'm Tine, Senior Software Engineer | Team Leader | OSS Maintainer](https://github-readme-stats.vercel.app/api?username=tinesoft&show_icons=true)
 
-You can use the [editor on GitHub](https://github.com/tinesoft/tinesoft/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+I work as **Software Engineer** and **Team Leader** at day 🌞 , and as **Opensource Maintainer** at night 🌑 and on weekends
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+I love ❤️ Angular, Spring, MongoDB and Opensource Software.
+I contribute to OSS projects the most I can by releasing **tools** and **libraries** for my fellow developers, or by issuing PRs to other repositories I use.
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Skills: **Java**, TypeScript, **Spring**, **Angular**, MongoDB, ElasticSearch, SQL, **Docker**
 
-```markdown
-Syntax highlighted code block
+- 🔭 I’m currently working on https://github.com/tinesoft/nxrocks 
+- 👯 I’m looking to collaborate on https://github.com/javers/javers 
+- 💬 Ask me about Spring/Angular/Testing 
+- 😄 Pronouns: He/Him 
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+[<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40'>](https://github.com/tinesoft)  [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/dev-dot-to.svg' alt='dev' height='40'>](https://dev.to/tinesoft)  [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='40'>](https://www.linkedin.com/in/tinekondo/)  [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg' alt='twitter' height='40'>](https://twitter.com/tinesoft)  [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/stackoverflow.svg' alt='stackoverflow' height='40'>](https://stackoverflow.com/users/tinesoft)  
 
-1. Numbered
-2. List
+[![trophy](https://github-profile-trophy.vercel.app/?username=tinesoft)](https://github.com/ryo-ma/github-profile-trophy)
 
-**Bold** and _Italic_ and `Code` text
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=tinesoft)](https://github.com/anuraghazra/github-readme-stats)
 
-[Link](url) and ![Image](src)
-```
+![GitHub metrics](https://metrics.lecoq.io/tinesoft)  
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+![GitHub streak stats](https://github-readme-streak-stats.herokuapp.com/?user=tinesoft)  
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/tinesoft/tinesoft/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
