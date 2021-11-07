@@ -25,7 +25,7 @@ Skills: **Java**, TypeScript, **Spring**, **Angular**, MongoDB, ElasticSearch, S
 * [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40'> github.com/tinesoft](https://github.com/tinesoft)
 * [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg' alt='twitter' height='40'> twitter.com/tinesoft](https://twitter.com/tinesoft)
 * [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/dev-dot-to.svg' alt='dev' height='40'> dev.to/tinesoft](https://dev.to/tinesoft)
-* [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='40'> linkedin.com/in/tinekondo](https://www.linkedin.com/in/tinekondo)  
+* [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='40'> linkedin.com/in/tine-kondo](https://www.linkedin.com/in/tinekondo)  
 * [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/stackoverflow.svg' alt='stackoverflow' height='40'> stackoverflow.com/users/tinesoft](https://stackoverflow.com/users/tinesoft)  
 
 ## My trophies on Github
