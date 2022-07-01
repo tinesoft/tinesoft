@@ -2,12 +2,12 @@
 
 ## Who am I?
 
-#### I'm Tine, Senior Software Engineer | Team Leader | OSS Maintainer
-![I'm Tine, Senior Software Engineer | Team Leader | OSS Maintainer](https://github-readme-stats.vercel.app/api?username=tinesoft&show_icons=true)
+#### I'm Tine, Sr Software Engineer | Engineering Manager | OSS Maintainer
+![I'm Tine, Senior Software Engineer | Engineering Manager | OSS Maintainer](https://github-readme-stats.vercel.app/api?username=tinesoft&show_icons=true)
 
 ## What I do?
 
-I work as **Software Engineer** and **Team Leader** at day 🌞 , and as **Opensource Maintainer** at night 🌚 and on weekends.
+I work as **Sr Software Engineer** and **Engineering Manager** at day 🌞 , and as **Opensource Maintainer** at night 🌚 and on weekends.
 
 I love ❤️ Angular, Spring, MongoDB and Opensource Software.
 I contribute to OSS projects the most I can by releasing **tools** and **libraries** for my fellow developers, or by issuing PRs to other repositories I use.
