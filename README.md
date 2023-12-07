@@ -2,16 +2,17 @@
 
 ## Who am I?
 
-#### I'm Tine, Sr Software Engineer | Engineering Manager | OSS Maintainer
-![I'm Tine, Senior Software Engineer | Engineering Manager | OSS Maintainer](https://github-readme-stats.vercel.app/api?username=tinesoft&show_icons=true)
+#### I'm Tine, Senior Staff Engineer | OSS Maintainer | Nx Champion 🏆
+![I'm Tine, Senior Staff Engineer | OSS Maintainer | Nx Champion 🏆](https://github-readme-stats.vercel.app/api?username=tinesoft&show_icons=true)
 
 ## What I do?
 
-I work as **Sr Software Engineer** and **Engineering Manager** at day 🌞 , and as **Opensource Maintainer** at night 🌚 and on weekends.
+I work as **Sr Software Engineer** and **Sr Staff Engineer** at day 🌞 , and as **Opensource Maintainer** at night 🌚 and on weekends.
 
 I love ❤️ Angular, Spring, MongoDB and Opensource Software.
 I contribute to OSS projects the most I can by releasing **tools** and **libraries** for my fellow developers, or by issuing PRs to other repositories I use.
 
+I'm [Nx Champion 🏆](https://nx.dev/community) and contribute to the Nx ecosystem the best I can
 
 Skills: **Java**, TypeScript, **Spring**, **Angular**, MongoDB, ElasticSearch, SQL, **Docker**
 
