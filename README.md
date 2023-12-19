@@ -14,11 +14,11 @@ I contribute to OSS projects the most I can by releasing **tools** and **librari
 
 I'm [Nx Champion 🏆](https://nx.dev/community) and contribute to the Nx ecosystem the best I can
 
-Skills: **Java**, TypeScript, **Spring**, **Angular**, MongoDB, ElasticSearch, SQL, **Docker**
+Skills: **Java**, TypeScript, **Spring**, **Nx**, **Angular**, MongoDB, ElasticSearch, SQL, **Docker**
 
 - 🔭 I’m currently working on https://github.com/tinesoft/nxrocks 
 - 👯 I’m looking to collaborate on https://github.com/javers/javers 
-- 💬 Ask me about Spring/Angular/Testing 
+- 💬 Ask me about Spring/Nx/Angular/Testing 
 - 😄 Pronouns: He/Him 
 
 ## Where to find me?
