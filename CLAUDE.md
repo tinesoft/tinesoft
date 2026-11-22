@@ -14,6 +14,7 @@ Tine Kondo's GitHub profile repo and the source of [tinesoft.com](https://tineso
 - Which repos show, and their category: `apps/web/src/lib/curation.ts` (exclude/include lists, hand-written copy) and `classify` in `apps/web/src/lib/projects.ts`. Keep logic in `src/lib/` pure and tested; components only render.
 - Theme: every colour is a CSS custom property in `apps/web/src/styles/global.css`, keyed by `data-theme` (dark | light) and `data-accent` (mint | terracotta) on `<html>`. The theme follows `prefers-color-scheme` until the visitor picks one with the toggle; picking the system's own theme clears the choice. Never hard-code a colour in a component.
 - Motion: client scripts animate through `every`/`onceVisible`/`tween` in `src/scripts/motion.ts`, which pause offscreen and honour `prefers-reduced-motion`.
+- Inline elements: Astro's `compressHTML` drops whitespace between tags across a newline; write `{' '}` where a space must survive.
 - The design lives in a claude.ai Design canvas ("tinesoft — homepage redesign"); the AI lab previews are illustrative by design.
 
 ## Checks
