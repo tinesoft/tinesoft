@@ -9,6 +9,8 @@ pnpm install   # also installs the Git hooks (Husky) and sets merge/pull to fast
 pnpm dev       # http://localhost:4321
 ```
 
+The repository includes a dev container (`.devcontainer/`) with Node, pnpm, the GitHub CLI and Claude Code installed. Open the folder in VS Code and choose **Reopen in Container**; port 4321 is forwarded.
+
 ## Commands
 
 | Command               | What it does                                                                           |
