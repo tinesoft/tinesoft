@@ -11,22 +11,47 @@ export const currentAccent = (): Accent =>
 const listeners = new Set<() => void>()
 export const onPreferencesChange = (fn: () => void) => listeners.add(fn)
 
-function save(key: string, value: string) {
+function save(key: string, value: string | null) {
   try {
-    localStorage.setItem(key, value)
+    if (value === null) localStorage.removeItem(key)
+    else localStorage.setItem(key, value)
   } catch {
     /* private mode: the choice lasts for this page only */
   }
 }
 
-export function setTheme(theme: Theme): void {
+function stored(key: string): string | null {
+  try {
+    return localStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
+
+const systemLight = matchMedia('(prefers-color-scheme: light)')
+const systemTheme = (): Theme => (systemLight.matches ? 'light' : 'dark')
+
+function applyTheme(theme: Theme): void {
   root.dataset.theme = theme
-  save(KEY.theme, theme)
   document
     .querySelector('meta[name="theme-color"]')
     ?.setAttribute('content', getComputedStyle(root).getPropertyValue('--bg').trim())
   listeners.forEach(fn => fn())
 }
+
+/**
+ * Picks a theme by hand. Picking the one the system already uses forgets the choice,
+ * so the site goes back to following the system.
+ */
+export function setTheme(theme: Theme): void {
+  save(KEY.theme, theme === systemTheme() ? null : theme)
+  applyTheme(theme)
+}
+
+// With no choice stored, follow the system theme as it changes.
+systemLight.addEventListener('change', () => {
+  if (!stored(KEY.theme)) applyTheme(systemTheme())
+})
 
 export function setAccent(accent: Accent): void {
   root.dataset.accent = accent

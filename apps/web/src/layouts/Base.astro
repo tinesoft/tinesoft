@@ -30,16 +30,24 @@ const base = import.meta.env.BASE_URL
     <link rel="manifest" href={`${base}manifest.webmanifest`} />
     <link rel="apple-touch-icon" href={`${base}icon.svg`} />
     <script is:inline>
-      // Before first paint, so a stored light theme never flashes dark.
-      try {
+      // Before first paint: a stored choice wins, otherwise follow the system theme.
+      ;(() => {
         const d = document.documentElement
-        d.dataset.theme = localStorage.getItem('tinesoft:theme') || 'dark'
-        d.dataset.accent = localStorage.getItem('tinesoft:accent') || 'mint'
+        let stored = {}
+        try {
+          stored = {
+            theme: localStorage.getItem('tinesoft:theme'),
+            accent: localStorage.getItem('tinesoft:accent'),
+          }
+        } catch {
+          // Storage is blocked: use the system theme and the default accent.
+        }
+        const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        d.dataset.theme = stored.theme || system
+        d.dataset.accent = stored.accent || 'mint'
         if (d.dataset.theme === 'light')
           document.querySelector('meta[name="theme-color"]').content = '#F5F6F3'
-      } catch {
-        // Storage is blocked: keep the defaults.
-      }
+      })()
     </script>
   </head>
   <body>
