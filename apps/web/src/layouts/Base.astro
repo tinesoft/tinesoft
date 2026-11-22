@@ -1,0 +1,48 @@
+---
+import '../styles/global.css'
+import { SITE_URL } from '../lib/site'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+const base = import.meta.env.BASE_URL
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark" data-accent="mint">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={SITE_URL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={SITE_URL} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@tinesoft" />
+    <meta name="theme-color" content="#0A0C10" />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="manifest" href={`${base}manifest.webmanifest`} />
+    <link rel="apple-touch-icon" href={`${base}icon.svg`} />
+    <script is:inline>
+      // Before first paint, so a stored light theme never flashes dark.
+      try {
+        const d = document.documentElement
+        d.dataset.theme = localStorage.getItem('tinesoft:theme') || 'dark'
+        d.dataset.accent = localStorage.getItem('tinesoft:accent') || 'mint'
+        if (d.dataset.theme === 'light')
+          document.querySelector('meta[name="theme-color"]').content = '#F5F6F3'
+      } catch {
+        // Storage is blocked: keep the defaults.
+      }
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

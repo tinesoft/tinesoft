@@ -1,0 +1,410 @@
+---
+import { EVENT_COPY, feed, topUpstream } from '../lib/activity'
+import { timeAgo } from '../lib/format'
+import type { Snapshot } from '../lib/types'
+import SectionHead from './SectionHead.astro'
+
+interface Props {
+  snapshot: Snapshot
+  now: Date
+}
+const { snapshot, now } = Astro.props
+const events = feed(snapshot.events)
+const upstream = topUpstream(snapshot.upstream)
+const weeks = snapshot.calendar?.weeks ?? []
+const synced = new Date(snapshot.syncedAt).toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+  timeZone: 'UTC',
+})
+---
+
+<section id="activity" class="activity container">
+  <SectionHead module="module 03 · telemetry" title="Recent activity" />
+  <p class="note">Public GitHub events and contributions, last synced {synced}.</p>
+
+  <div class="layout">
+    <div class="panel log">
+      <div class="log-head">
+        <span>event_stream.log</span>
+        <span class="accent flex">
+          <span class="live"></span>streaming
+        </span>
+      </div>
+      <ul class="events">
+        <li class="fetching" aria-hidden="true">
+          <span class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          agent is fetching the next event
+        </li>
+        {events.map((e, i) => {
+          const copy = EVENT_COPY[e.kind]
+          return (
+            <li class="event" style={`animation-delay: ${i * 0.08}s`}>
+              <span class:list={['glyph', copy.tone ? 'alt' : 'main']} aria-hidden="true">
+                {copy.glyph}
+              </span>
+              <span class="what">
+                <span class="verb">{copy.verb}</span>{' '}
+                <a class="mono accent" href={`https://github.com/${e.repo}`}>
+                  {e.repo}
+                </a>
+              </span>
+              <time class="ago" datetime={e.at}>
+                {timeAgo(e.at, now)}
+              </time>
+            </li>
+          )
+        })}
+        {events.length === 0 && <li class="event muted">No public events in the last 90 days.</li>}
+      </ul>
+    </div>
+
+    <div class="side">
+      <div class="panel box">
+        <div class="box-head">
+          <span>contributions · last 12 months</span>
+          <span class="muted">
+            {snapshot.calendar ? `${snapshot.calendar.total} total` : 'not synced yet'}
+          </span>
+        </div>
+        <div class="scroll">
+          <div
+            class="heatmap"
+            id="heatmap"
+            role="img"
+            aria-label={`Contribution heatmap: ${snapshot.calendar?.total ?? 0} contributions in the last year`}
+          >
+            {weeks.map(w => w.map(lv => <span class="cell" data-lv={lv} />))}
+          </div>
+        </div>
+        <div class="legend" aria-hidden="true">
+          less{' '}
+          {[0, 1, 2, 3, 4].map(lv => (
+            <span class="cell" data-lv={lv} />
+          ))}{' '}
+          more
+        </div>
+      </div>
+
+      <div class="panel box">
+        <div class="box-head">
+          <span>upstream.contributions</span>
+          <span class="muted">PRs opened</span>
+        </div>
+        <div class="bars" id="upstream">
+          {upstream.map(u => (
+            <div class="bar-row">
+              <a class="repo mono" href={`https://github.com/${u.repo}`}>
+                {u.repo}
+              </a>
+              <span class="track">
+                <span class="fill" data-pct={u.pct} />
+              </span>
+              <span class="num mono">{u.count}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { every, onceVisible } from '../scripts/motion'
+  import { timeAgo } from '../lib/format'
+
+  // Times were rendered at build; bring them up to date.
+  for (const t of document.querySelectorAll<HTMLTimeElement>('#activity time'))
+    t.textContent = timeAgo(t.dateTime, new Date())
+
+  // A bright column sweeps across the heatmap.
+  const heatmap = document.getElementById('heatmap')!
+  const cells = [...heatmap.querySelectorAll<HTMLElement>('.cell')]
+  const columns = Math.ceil(cells.length / 7)
+  let lit: HTMLElement[] = []
+  every(heatmap, 80, tick => {
+    lit.forEach(c => c.classList.remove('boost'))
+    const col = tick % (columns + 17)
+    lit = cells.slice(col * 7, col * 7 + 7)
+    lit.forEach(c => c.classList.add('boost'))
+  })
+
+  // Upstream bars grow in once seen.
+  const bars = document.getElementById('upstream')
+  onceVisible(bars, () =>
+    bars!
+      .querySelectorAll<HTMLElement>('.fill')
+      .forEach(f => (f.style.width = `${f.dataset.pct}%`)),
+  )
+</script>
+
+<style>
+  .activity {
+    padding-top: 104px;
+  }
+
+  .note {
+    margin: 12px 0 0;
+    font: 400 13px var(--mono);
+    color: var(--muted);
+  }
+
+  .layout {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .log {
+    flex: 1 1 420px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .log-head,
+  .box-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font: 500 13px var(--mono);
+  }
+
+  .log-head {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .events {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+  }
+
+  .fetching {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 20px;
+    font: 400 12px var(--mono);
+    color: var(--muted);
+  }
+
+  .dots {
+    display: inline-flex;
+    gap: 3px;
+    color: var(--acc);
+  }
+
+  .dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 9px;
+    background: currentColor;
+    animation: think 1.2s infinite;
+  }
+
+  .dots span:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .dots span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .event {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 20px;
+    animation: slidein 0.45s ease both;
+  }
+
+  .glyph {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    font: 700 13px var(--mono);
+  }
+
+  .glyph.main {
+    background: var(--acc-soft);
+    color: var(--acc);
+  }
+
+  .glyph.alt {
+    background: var(--acc2-soft);
+    color: var(--acc2);
+  }
+
+  .what {
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .verb {
+    font-weight: 600;
+  }
+
+  .ago {
+    flex: none;
+    font: 400 12px var(--mono);
+    color: var(--muted);
+  }
+
+  .side {
+    flex: 1 1 520px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .box {
+    padding: 20px;
+  }
+
+  .scroll {
+    margin-top: 16px;
+    overflow-x: auto;
+  }
+
+  .heatmap {
+    display: grid;
+    grid-template-rows: repeat(7, 10px);
+    grid-auto-flow: column;
+    grid-auto-columns: 10px;
+    gap: 3px;
+    width: max-content;
+  }
+
+  .cell {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--lv0);
+    transition: background 0.5s;
+  }
+
+  .cell[data-lv='1'],
+  .cell.boost[data-lv='0'] {
+    background: var(--lv1);
+  }
+
+  .cell[data-lv='2'],
+  .cell.boost[data-lv='1'] {
+    background: var(--lv2);
+  }
+
+  .cell[data-lv='3'],
+  .cell.boost[data-lv='2'] {
+    background: var(--lv3);
+  }
+
+  .cell[data-lv='4'],
+  .cell.boost[data-lv='3'],
+  .cell.boost[data-lv='4'] {
+    background: var(--lv4);
+  }
+
+  .cell.boost {
+    transition: none;
+  }
+
+  .legend {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    font: 400 11px var(--mono);
+    color: var(--muted);
+  }
+
+  .bars {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .repo {
+    flex: 0 0 46%;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .track {
+    flex: 1;
+    height: 8px;
+    border-radius: 9px;
+    background: var(--surface2);
+    overflow: hidden;
+  }
+
+  .fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 9px;
+    background: var(--acc);
+    transition: width 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .num {
+    flex: none;
+    width: 28px;
+    text-align: right;
+    color: var(--muted);
+  }
+
+  @keyframes think {
+    0%,
+    80%,
+    100% {
+      opacity: 0.25;
+      transform: translateY(0);
+    }
+    40% {
+      opacity: 1;
+      transform: translateY(-3px);
+    }
+  }
+
+  @keyframes slidein {
+    from {
+      opacity: 0;
+      transform: translateX(-14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

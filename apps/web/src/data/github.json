@@ -1,0 +1,1951 @@
+{
+  "syncedAt": "2026-11-22T13:04:09.969Z",
+  "user": "tinesoft",
+  "repos": [
+    {
+      "name": ".trunk",
+      "description": "Used by Trunk. Learn more at https://docs.trunk.io/code-quality/ci/get-started/github-integration",
+      "url": "https://github.com/tinesoft/.trunk",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2024-08-30T09:24:24Z",
+      "pushedAt": "2024-08-30T09:24:27Z"
+    },
+    {
+      "name": "ai-plugins",
+      "description": "A set of Claude Code plugins by @tinesoft: git workflow, context tooling and mattpocock-skills extras",
+      "url": "https://github.com/tinesoft/ai-plugins",
+      "stars": 0,
+      "language": "JavaScript",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2026-11-22T10:22:14Z",
+      "pushedAt": "2026-11-22T10:44:17Z"
+    },
+    {
+      "name": "aikill",
+      "description": "a TUI dashboard for hunting down and killing the disk space your AI coding agents leave behind.",
+      "url": "https://github.com/tinesoft/aikill",
+      "stars": 0,
+      "language": "Rust",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2026-08-13T01:57:17Z",
+      "pushedAt": "2026-08-17T04:58:41Z"
+    },
+    {
+      "name": "angular",
+      "description": "The modern web developer’s platform",
+      "url": "https://github.com/tinesoft/angular",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2022-08-26T08:41:15Z",
+      "pushedAt": "2022-08-26T08:39:45Z"
+    },
+    {
+      "name": "angular-cli",
+      "description": "CLI tool for Angular2",
+      "url": "https://github.com/tinesoft/angular-cli",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2016-08-24T17:26:39Z",
+      "pushedAt": "2016-08-24T13:09:00Z"
+    },
+    {
+      "name": "angular-cli-ghpages",
+      "description": "🚀 Deploy your 🅰️Angular app to GitHub pages directly from the Angular CLI! Available on NPM.",
+      "url": "https://github.com/tinesoft/angular-cli-ghpages",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2023-04-03T13:25:53Z",
+      "pushedAt": "2023-04-03T13:25:59Z"
+    },
+    {
+      "name": "angular-guides",
+      "description": "Open Learning Angular guides by This is Angular.",
+      "url": "https://github.com/tinesoft/angular-guides",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2023-12-23T21:41:14Z",
+      "pushedAt": "2023-12-23T21:42:51Z"
+    },
+    {
+      "name": "angular-logos",
+      "description": "This repo is dedicated to collect all the different kinds of Angular badges / logos. This can be a logo from a conference, a NPM package, ...",
+      "url": "https://github.com/tinesoft/angular-logos",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2021-01-14T08:41:21Z",
+      "pushedAt": "2021-05-02T05:13:17Z"
+    },
+    {
+      "name": "angular-search-experience",
+      "description": "Algolia + Angular = 🔥🔥🔥",
+      "url": "https://github.com/tinesoft/angular-search-experience",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2018-10-15T19:11:26Z",
+      "pushedAt": "2018-10-22T07:00:41Z"
+    },
+    {
+      "name": "angular-ui-tab-scroll",
+      "description": "A scrollable tab plugin compatible with angular-ui bootstrap tabs",
+      "url": "https://github.com/tinesoft/angular-ui-tab-scroll",
+      "stars": 1,
+      "language": "CSS",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2015-06-10T22:17:15Z",
+      "pushedAt": "2015-09-05T22:09:47Z"
+    },
+    {
+      "name": "angular.io",
+      "description": "Website for Angular 2",
+      "url": "https://github.com/tinesoft/angular.io",
+      "stars": 1,
+      "language": "HTML",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2016-09-29T05:33:07Z",
+      "pushedAt": "2016-09-29T02:46:26Z"
+    },
+    {
+      "name": "angular2-alert-notifications",
+      "description": "Angular 2/4 - Alert (Toaster) Notifications",
+      "url": "https://github.com/tinesoft/angular2-alert-notifications",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2017-09-09T21:34:51Z",
+      "pushedAt": "2017-09-10T10:56:09Z"
+    },
+    {
+      "name": "appengine-maven-plugin",
+      "description": "Automatically exported from code.google.com/p/appengine-maven-plugin",
+      "url": "https://github.com/tinesoft/appengine-maven-plugin",
+      "stars": 1,
+      "language": "Java",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2015-12-07T22:56:08Z",
+      "pushedAt": "2015-12-07T22:56:48Z"
+    },
+    {
+      "name": "awesome-copilot",
+      "description": "Community-contributed instructions, prompts, and configurations to help you make the most of GitHub Copilot.",
+      "url": "https://github.com/tinesoft/awesome-copilot",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2025-07-09T08:51:09Z",
+      "pushedAt": "2025-07-09T03:41:58Z"
+    },
+    {
+      "name": "cca-f",
+      "description": "Training and preparation guide for Claude Certified Architect - Foundations",
+      "url": "https://github.com/tinesoft/cca-f",
+      "stars": 0,
+      "language": "HTML",
+      "topics": [
+        "cca-f",
+        "cca-f-exam-questions",
+        "cca-f-study-guide"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2026-07-26T15:53:02Z",
+      "pushedAt": "2026-09-06T13:33:31Z"
+    },
+    {
+      "name": "challenge-registry",
+      "description": "Challenge Registry monorepo",
+      "url": "https://github.com/tinesoft/challenge-registry",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2022-08-25T21:25:40Z",
+      "pushedAt": "2022-08-25T20:05:49Z"
+    },
+    {
+      "name": "claude-mods",
+      "description": "A set of Mods to enhance your UX and DX on Claude",
+      "url": "https://github.com/tinesoft/claude-mods",
+      "stars": 4,
+      "language": "TypeScript",
+      "topics": [
+        "claude-code",
+        "claude-mods",
+        "claude-plugins"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2026-10-17T22:28:36Z",
+      "pushedAt": "2026-11-22T00:52:43Z"
+    },
+    {
+      "name": "coding-with-ai",
+      "description": "Coding with AI: 7-day training to help agentic development",
+      "url": "https://github.com/tinesoft/coding-with-ai",
+      "stars": 2,
+      "language": "TypeScript",
+      "topics": [
+        "ai"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2025-09-07T19:05:09Z",
+      "pushedAt": "2025-11-05T09:04:14Z"
+    },
+    {
+      "name": "conventional-github-releaser",
+      "description": ":octocat: Make a new GitHub release from git metadata",
+      "url": "https://github.com/tinesoft/conventional-github-releaser",
+      "stars": 1,
+      "language": "JavaScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2017-04-10T17:49:43Z",
+      "pushedAt": "2017-01-26T03:17:04Z"
+    },
+    {
+      "name": "create-probot-app",
+      "description": "🤖📦 Create a new probot app",
+      "url": "https://github.com/tinesoft/create-probot-app",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2019-09-19T23:03:40Z",
+      "pushedAt": "2019-09-19T16:52:07Z"
+    },
+    {
+      "name": "cute-collage",
+      "description": "A photo collage application powered by Qt framework",
+      "url": "https://github.com/tinesoft/cute-collage",
+      "stars": 2,
+      "language": "C++",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2015-03-14T18:28:40Z",
+      "pushedAt": "2020-06-09T17:46:26Z"
+    },
+    {
+      "name": "dialogflow-javascript-client",
+      "description": "JavaScript Web SDK for Dialogflow",
+      "url": "https://github.com/tinesoft/dialogflow-javascript-client",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2018-10-18T16:46:58Z",
+      "pushedAt": "2018-10-11T13:36:10Z"
+    },
+    {
+      "name": "dotfiles",
+      "description": "Repository containing useful  dot-files to customize devcontainers setup (VScode or GitHub Codespaces-based)",
+      "url": "https://github.com/tinesoft/dotfiles",
+      "stars": 1,
+      "language": null,
+      "topics": [
+        "config",
+        "devcontainers",
+        "dotfiles"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2022-11-03T04:58:31Z",
+      "pushedAt": "2026-11-19T15:11:10Z"
+    },
+    {
+      "name": "droidlinguist",
+      "description": "A tool that helps you easily translate your killer android apps in a nice & clear interface, using popular translator engines like Microsoft Translator, Yandex Translate or Google Translate!",
+      "url": "https://github.com/tinesoft/droidlinguist",
+      "stars": 10,
+      "language": "Java",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2015-02-26T01:09:46Z",
+      "pushedAt": "2016-12-01T19:54:51Z"
+    },
+    {
+      "name": "enquirer",
+      "description": "Stylish, intuitive and user-friendly prompts, for Node.js. Used by eslint, webpack, yarn, pm2, pnpm, RedwoodJS, FactorJS, salesforce, Cypress, Google Lighthouse, Generate, tencent cloudbase, lint-staged, gluegun, hygen, hardhat, AWS Amplify, GitHub Actions Toolkit, @airbnb/nimbus, and many others! Please follow Enquirer's author: https://github.com",
+      "url": "https://github.com/tinesoft/enquirer",
+      "stars": 1,
+      "language": "JavaScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2023-03-02T05:46:10Z",
+      "pushedAt": "2023-03-02T05:49:25Z"
+    },
+    {
+      "name": "generator-ngx-library",
+      "description": "Yeoman generator to bootstrap :rocket: your Angular library creation and publication. ",
+      "url": "https://github.com/tinesoft/generator-ngx-library",
+      "stars": 90,
+      "language": "JavaScript",
+      "topics": [
+        "angular",
+        "generator",
+        "library",
+        "yeoman-generator"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2015-07-05T06:40:48Z",
+      "pushedAt": "2022-12-06T19:49:20Z"
+    },
+    {
+      "name": "gulp-compodoc",
+      "description": "Compodoc plugin for gulp",
+      "url": "https://github.com/tinesoft/gulp-compodoc",
+      "stars": 1,
+      "language": "JavaScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2017-10-23T17:46:14Z",
+      "pushedAt": "2017-07-08T04:00:23Z"
+    },
+    {
+      "name": "gulp-hub",
+      "description": "Gulp plugin to run tasks in multiple gulpfiles",
+      "url": "https://github.com/tinesoft/gulp-hub",
+      "stars": 1,
+      "language": "JavaScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2018-10-22T17:34:54Z",
+      "pushedAt": "2018-02-10T15:59:00Z"
+    },
+    {
+      "name": "gwt-pixlr",
+      "description": "a library for easily integrating online photo editing services \"Pixlr\" in your GWT web applications.",
+      "url": "https://github.com/tinesoft/gwt-pixlr",
+      "stars": 3,
+      "language": "Java",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2015-03-14T18:25:12Z",
+      "pushedAt": "2015-03-14T18:54:49Z"
+    },
+    {
+      "name": "hacktoberfest-2020",
+      "description": "Repository to share documents, share code....",
+      "url": "https://github.com/tinesoft/hacktoberfest-2020",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2020-10-02T10:12:19Z",
+      "pushedAt": "2020-10-03T09:19:59Z"
+    },
+    {
+      "name": "javalin.github.io",
+      "description": "Javalin website source code",
+      "url": "https://github.com/tinesoft/javalin.github.io",
+      "stars": 1,
+      "language": "CSS",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2019-06-17T07:36:55Z",
+      "pushedAt": "2019-06-16T15:19:22Z"
+    },
+    {
+      "name": "javers",
+      "description": "JaVers - object auditing and diff framework for Java",
+      "url": "https://github.com/tinesoft/javers",
+      "stars": 1,
+      "language": "Java",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2018-04-23T07:58:01Z",
+      "pushedAt": "2020-10-12T08:21:41Z"
+    },
+    {
+      "name": "katalon-studio",
+      "description": null,
+      "url": "https://github.com/tinesoft/katalon-studio",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2019-03-08T09:26:06Z",
+      "pushedAt": "2019-03-08T06:37:23Z"
+    },
+    {
+      "name": "klingon",
+      "description": "Angular Klingon: The UI companion for the @angular/cli",
+      "url": "https://github.com/tinesoft/klingon",
+      "stars": 1,
+      "language": "HTML",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2018-10-04T17:11:00Z",
+      "pushedAt": "2018-10-04T19:06:46Z"
+    },
+    {
+      "name": "nba-tracker-app",
+      "description": "NBA (basic) tracker app to showcase some angular features",
+      "url": "https://github.com/tinesoft/nba-tracker-app",
+      "stars": 2,
+      "language": "TypeScript",
+      "topics": [
+        "angular"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2023-04-01T06:18:37Z",
+      "pushedAt": "2023-04-12T18:25:33Z"
+    },
+    {
+      "name": "nebula-bintray-plugin",
+      "description": "Bintray Tasks",
+      "url": "https://github.com/tinesoft/nebula-bintray-plugin",
+      "stars": 1,
+      "language": "Groovy",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2019-07-30T05:01:31Z",
+      "pushedAt": "2019-07-10T23:53:07Z"
+    },
+    {
+      "name": "ng-bootstrap",
+      "description": "Angular 2 powered Bootstrap",
+      "url": "https://github.com/tinesoft/ng-bootstrap",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2016-10-31T21:04:40Z",
+      "pushedAt": "2016-10-31T16:33:53Z"
+    },
+    {
+      "name": "ng-browser-update",
+      "description": "AngularJS directive for Browser-Update.org (http://browser-update.org):  out-dated browsers notifier.",
+      "url": "https://github.com/tinesoft/ng-browser-update",
+      "stars": 18,
+      "language": "JavaScript",
+      "topics": [],
+      "fork": false,
+      "archived": true,
+      "createdAt": "2014-12-22T12:58:46Z",
+      "pushedAt": "2016-03-06T12:35:59Z"
+    },
+    {
+      "name": "ng-juxtapose",
+      "description": "AngularJS directive for JuxtaposeJS, a JavaScript library for making before/after image sliders.",
+      "url": "https://github.com/tinesoft/ng-juxtapose",
+      "stars": 9,
+      "language": "JavaScript",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2015-07-04T18:24:04Z",
+      "pushedAt": "2016-03-06T13:35:22Z"
+    },
+    {
+      "name": "ng2-select",
+      "description": "Angular2 based replacement for select boxes",
+      "url": "https://github.com/tinesoft/ng2-select",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2017-01-02T08:54:59Z",
+      "pushedAt": "2016-12-24T01:46:07Z"
+    },
+    {
+      "name": "ngx-autobot",
+      "description": "Coming soon...",
+      "url": "https://github.com/tinesoft/ngx-autobot",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2019-07-12T03:33:58Z",
+      "pushedAt": "2019-07-12T03:33:59Z"
+    },
+    {
+      "name": "ngx-cookieconsent",
+      "description": "Cookie :cookie: Consent module for Angular.",
+      "url": "https://github.com/tinesoft/ngx-cookieconsent",
+      "stars": 171,
+      "language": "HTML",
+      "topics": [
+        "angular",
+        "cookie",
+        "cookie-consent",
+        "eu",
+        "hacktoberfest",
+        "law"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2017-06-10T00:32:02Z",
+      "pushedAt": "2024-12-23T19:28:58Z"
+    },
+    {
+      "name": "ngx-scrollreveal",
+      "description": "Angular directives for ScrollReveal : a JavaScript library for easily animating elements as they enter/leave the viewport.",
+      "url": "https://github.com/tinesoft/ngx-scrollreveal",
+      "stars": 93,
+      "language": "JavaScript",
+      "topics": [
+        "angular",
+        "animation",
+        "hacktoberfest",
+        "scroll",
+        "scrollreveal"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2016-11-06T19:11:05Z",
+      "pushedAt": "2023-01-04T15:54:01Z"
+    },
+    {
+      "name": "ngx-sharebuttons",
+      "description": "Share buttons for angular 2",
+      "url": "https://github.com/tinesoft/ngx-sharebuttons",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2016-12-14T00:00:50Z",
+      "pushedAt": "2017-05-18T08:01:53Z"
+    },
+    {
+      "name": "ngx-storybook-schematics",
+      "description": "Schematics to easily add Storybook support to your Angular projects",
+      "url": "https://github.com/tinesoft/ngx-storybook-schematics",
+      "stars": 10,
+      "language": "TypeScript",
+      "topics": [
+        "angular",
+        "angular-cli",
+        "schematics",
+        "storybook"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2018-07-30T08:40:40Z",
+      "pushedAt": "2019-10-27T15:14:09Z"
+    },
+    {
+      "name": "ngx-uptodate",
+      "description": "A Github @actions that keeps your @angular CLI-based projects up-to-date via automated PRs based on `ng update`.",
+      "url": "https://github.com/tinesoft/ngx-uptodate",
+      "stars": 11,
+      "language": "JavaScript",
+      "topics": [
+        "angular",
+        "angular-cli",
+        "github-actions",
+        "update"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2019-09-23T18:02:54Z",
+      "pushedAt": "2023-01-07T10:49:12Z"
+    },
+    {
+      "name": "ngx-wow",
+      "description": "Angular module for WOW.js: a customizable library to reveal animations when you scroll.",
+      "url": "https://github.com/tinesoft/ngx-wow",
+      "stars": 33,
+      "language": "JavaScript",
+      "topics": [
+        "angular",
+        "animate-css",
+        "animations",
+        "wow"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2017-10-18T16:18:11Z",
+      "pushedAt": "2023-01-04T14:46:51Z"
+    },
+    {
+      "name": "node-unzipper",
+      "description": "node.js cross-platform unzip using streams",
+      "url": "https://github.com/tinesoft/node-unzipper",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2020-10-12T11:49:20Z",
+      "pushedAt": "2020-10-11T08:57:44Z"
+    },
+    {
+      "name": "nosql-unit",
+      "description": "NoSQL Unit is a JUnit extension that helps you write NoSQL unit tests.",
+      "url": "https://github.com/tinesoft/nosql-unit",
+      "stars": 1,
+      "language": "Java",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2018-04-11T08:20:13Z",
+      "pushedAt": "2019-04-19T09:16:45Z"
+    },
+    {
+      "name": "nx",
+      "description": "Extensible Dev Tools for Monorepos",
+      "url": "https://github.com/tinesoft/nx",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2020-10-19T23:02:45Z",
+      "pushedAt": "2026-02-23T07:29:55Z"
+    },
+    {
+      "name": "nx-cloud-workflows",
+      "description": null,
+      "url": "https://github.com/tinesoft/nx-cloud-workflows",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2025-02-07T17:46:57Z",
+      "pushedAt": "2025-01-20T19:03:00Z"
+    },
+    {
+      "name": "nx-dotnet",
+      "description": null,
+      "url": "https://github.com/tinesoft/nx-dotnet",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2022-09-10T06:46:26Z",
+      "pushedAt": "2024-01-16T05:09:08Z"
+    },
+    {
+      "name": "nx-examples",
+      "description": "Example repo for Nx workspace",
+      "url": "https://github.com/tinesoft/nx-examples",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2022-07-05T18:45:45Z",
+      "pushedAt": "2022-07-04T20:25:17Z"
+    },
+    {
+      "name": "nx-multi-stacks-monorepo",
+      "description": "Companion project for Sfeir School Nx",
+      "url": "https://github.com/tinesoft/nx-multi-stacks-monorepo",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [
+        "angular",
+        "nx-workspace",
+        "react",
+        "spring-boot"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2023-12-12T23:16:23Z",
+      "pushedAt": "2024-10-03T15:29:40Z"
+    },
+    {
+      "name": "nx-python",
+      "description": "Python plugin for Nx with support for Django and Flask",
+      "url": "https://github.com/tinesoft/nx-python",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2024-05-21T13:05:10Z",
+      "pushedAt": "2024-05-23T09:39:33Z"
+    },
+    {
+      "name": "nx-semantic-release",
+      "description": "Package for automated releases for nx built on semantic-release",
+      "url": "https://github.com/tinesoft/nx-semantic-release",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2023-03-25T06:01:48Z",
+      "pushedAt": "2023-04-10T08:32:45Z"
+    },
+    {
+      "name": "nxrocks",
+      "description": "Set of Nx plugins to enhance your Nx workspace (even more!)",
+      "url": "https://github.com/tinesoft/nxrocks",
+      "stars": 328,
+      "language": "TypeScript",
+      "topics": [
+        "devtools",
+        "flutter",
+        "hacktoberfest",
+        "ktor",
+        "melos",
+        "micronaut",
+        "nx",
+        "quarkus",
+        "spring-boot"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2020-09-06T18:05:54Z",
+      "pushedAt": "2025-08-19T22:01:19Z"
+    },
+    {
+      "name": "opensource",
+      "description": "Delivering delightful digital solutions. Open Source packages with combined ~75M/month downloads, semantically versioned following @conventional-commits. Fully powered by Jest, @Babel TypeScript, @Airbnb @ESLint + @Prettier, @YarnPKG + @Lerna independent versioning, GH @Actions & automated dep updates with @RenovateBot.",
+      "url": "https://github.com/tinesoft/opensource",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2020-09-01T18:58:07Z",
+      "pushedAt": "2020-07-16T14:46:27Z"
+    },
+    {
+      "name": "OpenSpec",
+      "description": "Spec-driven development (SDD) for AI coding assistants.",
+      "url": "https://github.com/tinesoft/OpenSpec",
+      "stars": 0,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2025-12-28T15:46:16Z",
+      "pushedAt": "2025-12-28T14:30:58Z"
+    },
+    {
+      "name": "OSSRH-50241",
+      "description": "Ownership validation  for Sonatype",
+      "url": "https://github.com/tinesoft/OSSRH-50241",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2019-07-22T20:19:50Z",
+      "pushedAt": "2019-07-22T20:19:51Z"
+    },
+    {
+      "name": "pivotal-certified-pro-spring-dev-exam-02",
+      "description": "Source Code for 'Pivotal Certified Professional Core Spring 5 Developer Exam' by Iuliana Cosmina",
+      "url": "https://github.com/tinesoft/pivotal-certified-pro-spring-dev-exam-02",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2020-11-09T19:17:15Z",
+      "pushedAt": "2020-10-01T11:18:00Z"
+    },
+    {
+      "name": "react-deno-app-starter",
+      "description": "A starter template for React, Babel, Webpack And Typescript, with Deno on the server",
+      "url": "https://github.com/tinesoft/react-deno-app-starter",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2020-05-22T19:28:00Z",
+      "pushedAt": "2020-02-26T21:17:31Z"
+    },
+    {
+      "name": "release-github-actions",
+      "description": "GitHub Actions to auto release GitHub Actions",
+      "url": "https://github.com/tinesoft/release-github-actions",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2019-11-03T19:23:18Z",
+      "pushedAt": "2019-11-05T12:48:46Z"
+    },
+    {
+      "name": "revealjs-webpack-demo",
+      "description": null,
+      "url": "https://github.com/tinesoft/revealjs-webpack-demo",
+      "stars": 1,
+      "language": "JavaScript",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2020-03-30T06:57:43Z",
+      "pushedAt": "2023-01-07T16:31:53Z"
+    },
+    {
+      "name": "schematics-releaser",
+      "description": null,
+      "url": "https://github.com/tinesoft/schematics-releaser",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2018-10-09T12:07:28Z",
+      "pushedAt": "2018-10-09T12:07:28Z"
+    },
+    {
+      "name": "semantic-release-monorepo",
+      "description": "Apply semantic-release's automatic publishing to a monorepo.",
+      "url": "https://github.com/tinesoft/semantic-release-monorepo",
+      "stars": 1,
+      "language": "JavaScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2021-04-01T20:11:17Z",
+      "pushedAt": "2022-08-28T07:21:46Z"
+    },
+    {
+      "name": "skills",
+      "description": null,
+      "url": "https://github.com/tinesoft/skills",
+      "stars": 0,
+      "language": null,
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2026-09-26T04:02:28Z",
+      "pushedAt": "2026-09-26T04:02:29Z"
+    },
+    {
+      "name": "spec-kit",
+      "description": "💫 Toolkit to help you get started with Spec-Driven Development",
+      "url": "https://github.com/tinesoft/spec-kit",
+      "stars": 1,
+      "language": "Python",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2025-09-22T08:12:58Z",
+      "pushedAt": "2026-07-08T10:56:09Z"
+    },
+    {
+      "name": "spec-kit-token-budget",
+      "description": "Token Budget 💰 — a Spec Kit extension for token-efficient SDD",
+      "url": "https://github.com/tinesoft/spec-kit-token-budget",
+      "stars": 8,
+      "language": "Shell",
+      "topics": [
+        "extension",
+        "spec-driven-development",
+        "spec-kit",
+        "token-optimization",
+        "tokenomics"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2026-05-08T18:11:05Z",
+      "pushedAt": "2026-07-04T14:10:08Z"
+    },
+    {
+      "name": "spec-kit-token-budget-demo",
+      "description": "Demo project for Spec Kit Token Budget 💰 extension",
+      "url": "https://github.com/tinesoft/spec-kit-token-budget-demo",
+      "stars": 0,
+      "language": "Shell",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2026-05-18T02:16:25Z",
+      "pushedAt": "2026-05-23T10:25:49Z"
+    },
+    {
+      "name": "spectatui",
+      "description": "A TUI (Terminal UI) dashboard for Github Spec-Kit",
+      "url": "https://github.com/tinesoft/spectatui",
+      "stars": 95,
+      "language": "Rust",
+      "topics": [
+        "devtools",
+        "spec-kit",
+        "tui"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2026-06-22T07:15:44Z",
+      "pushedAt": "2026-09-13T10:37:45Z"
+    },
+    {
+      "name": "spring-boot",
+      "description": "Spring Boot",
+      "url": "https://github.com/tinesoft/spring-boot",
+      "stars": 1,
+      "language": "Java",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2019-08-20T04:41:35Z",
+      "pushedAt": "2019-08-20T02:47:47Z"
+    },
+    {
+      "name": "spring-boot-livestream",
+      "description": null,
+      "url": "https://github.com/tinesoft/spring-boot-livestream",
+      "stars": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2023-02-14T06:05:10Z",
+      "pushedAt": "2023-03-02T05:14:06Z"
+    },
+    {
+      "name": "spring-esdata-loader",
+      "description": "Set of JUnit Rules/Extensions to easily load data to test your spring-data elasticsearch-based projects",
+      "url": "https://github.com/tinesoft/spring-esdata-loader",
+      "stars": 8,
+      "language": "Java",
+      "topics": [
+        "elasticsearch",
+        "hacktoberfest",
+        "integration-tests",
+        "junit-jupiter",
+        "junit4",
+        "spring",
+        "spring-data-elasticsearch",
+        "spring-test"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2019-05-30T19:42:55Z",
+      "pushedAt": "2019-10-29T19:47:41Z"
+    },
+    {
+      "name": "spring-retry",
+      "description": null,
+      "url": "https://github.com/tinesoft/spring-retry",
+      "stars": 1,
+      "language": "Java",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2019-09-05T19:57:10Z",
+      "pushedAt": "2019-09-06T07:50:08Z"
+    },
+    {
+      "name": "start.spring.io",
+      "description": "https://start.spring.io",
+      "url": "https://github.com/tinesoft/start.spring.io",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2020-07-01T16:32:52Z",
+      "pushedAt": "2020-07-01T13:30:01Z"
+    },
+    {
+      "name": "streamlit-playground",
+      "description": "A playground to play with Streamlit library",
+      "url": "https://github.com/tinesoft/streamlit-playground",
+      "stars": 3,
+      "language": "Python",
+      "topics": [
+        "ai",
+        "langchain-python",
+        "streamlit"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2024-08-25T19:35:10Z",
+      "pushedAt": "2024-09-11T04:59:18Z"
+    },
+    {
+      "name": "tinesoft",
+      "description": "Home of Tine Kondo's OSS contributions.",
+      "url": "https://github.com/tinesoft/tinesoft",
+      "stars": 2,
+      "language": null,
+      "topics": [
+        "homepage",
+        "opensource",
+        "oss",
+        "tinesoft"
+      ],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2021-01-04T09:52:44Z",
+      "pushedAt": "2023-12-19T09:05:40Z"
+    },
+    {
+      "name": "tinesoft.github.io",
+      "description": null,
+      "url": "https://github.com/tinesoft/tinesoft.github.io",
+      "stars": 1,
+      "language": null,
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2014-01-14T09:47:37Z",
+      "pushedAt": "2014-01-14T09:47:37Z"
+    },
+    {
+      "name": "tinymce-angular",
+      "description": "Official TinyMCE Angular Component",
+      "url": "https://github.com/tinesoft/tinymce-angular",
+      "stars": 0,
+      "language": null,
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2022-09-08T15:07:59Z",
+      "pushedAt": "2022-08-30T01:36:47Z"
+    },
+    {
+      "name": "tutorials",
+      "description": "Uber-repositories that contains all projects showcased in my articles and presentations",
+      "url": "https://github.com/tinesoft/tutorials",
+      "stars": 1,
+      "language": "Java",
+      "topics": [],
+      "fork": false,
+      "archived": false,
+      "createdAt": "2020-03-01T14:59:08Z",
+      "pushedAt": "2022-12-05T11:19:17Z"
+    },
+    {
+      "name": "xlayers",
+      "description": "View and generate code from Sketch files online",
+      "url": "https://github.com/tinesoft/xlayers",
+      "stars": 0,
+      "language": "TypeScript",
+      "topics": [],
+      "fork": true,
+      "archived": false,
+      "createdAt": "2018-09-01T05:01:34Z",
+      "pushedAt": "2018-08-31T15:29:08Z"
+    }
+  ],
+  "events": [
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-20T02:01:07Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-22T00:46:00Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T20:36:03Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T20:13:27Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T20:33:51Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T04:53:43Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T01:41:36Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T06:12:44Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T01:48:45Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T01:24:23Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T02:27:27Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T02:15:46Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T18:45:51Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T16:05:00Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T17:19:37Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T20:53:14Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T16:16:24Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T15:09:59Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-20T01:48:20Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/dotfiles",
+      "at": "2026-11-19T15:11:10Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-20T01:39:08Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T20:38:55Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T20:34:17Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T20:18:42Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T20:08:55Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T16:52:19Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T16:27:13Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T05:40:56Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T03:41:27Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T04:03:31Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T00:58:52Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-19T01:24:26Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T01:19:04Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-17T22:44:30Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-17T23:43:07Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T09:52:45Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-17T21:20:50Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-16T20:17:48Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T03:45:39Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T09:52:59Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-17T22:19:04Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-17T22:13:34Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T03:54:06Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-18T01:31:13Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-17T23:51:40Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-17T22:54:36Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-17T22:35:47Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-17T21:42:18Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-17T21:10:00Z"
+    },
+    {
+      "kind": "pr-opened",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-17T20:38:54Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-16T20:17:51Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-16T18:28:44Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-16T20:47:18Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-16T19:19:37Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-16T19:33:31Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-16T14:39:39Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-16T18:04:57Z"
+    },
+    {
+      "kind": "star",
+      "repo": "google/elephant-goldfish-model",
+      "at": "2026-11-16T06:51:01Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-15T11:56:05Z"
+    },
+    {
+      "kind": "push",
+      "repo": "tinesoft/claude-mods",
+      "at": "2026-11-12T23:21:01Z"
+    }
+  ],
+  "mergedPrs": 314,
+  "upstream": [
+    {
+      "repo": "MurhafSousli/ngx-sharebuttons",
+      "count": 28
+    },
+    {
+      "repo": "nrwl/nx",
+      "count": 22
+    },
+    {
+      "repo": "VersifitTechnologies/angular-ui-tab-scroll",
+      "count": 8
+    },
+    {
+      "repo": "github/spec-kit",
+      "count": 6
+    },
+    {
+      "repo": "sfeir-open-source/sfeir-school-angular",
+      "count": 5
+    },
+    {
+      "repo": "sfeir-open-source/sfeir-school-langchain",
+      "count": 3
+    },
+    {
+      "repo": "sfeir-open-source/sfeir-school-nx",
+      "count": 3
+    },
+    {
+      "repo": "TheUnderScorer/nx-semantic-release",
+      "count": 3
+    },
+    {
+      "repo": "lordofthejars/nosql-unit",
+      "count": 3
+    },
+    {
+      "repo": "nx-dotnet/nx-dotnet",
+      "count": 2
+    },
+    {
+      "repo": "sfeir-open-source/hacktoberfest-2020",
+      "count": 2
+    },
+    {
+      "repo": "this-is-angular/angular-guides",
+      "count": 1
+    },
+    {
+      "repo": "angular-schule/angular-cli-ghpages",
+      "count": 1
+    },
+    {
+      "repo": "enquirer/enquirer",
+      "count": 1
+    },
+    {
+      "repo": "nrwl/spring-boot-livestream",
+      "count": 1
+    },
+    {
+      "repo": "maartentibau/angular-logos",
+      "count": 1
+    },
+    {
+      "repo": "technote-space/release-github-actions",
+      "count": 1
+    },
+    {
+      "repo": "spring-attic/spring-retry",
+      "count": 1
+    },
+    {
+      "repo": "manekinekko/angular-search-experience",
+      "count": 1
+    },
+    {
+      "repo": "angular-klingon/klingon",
+      "count": 1
+    },
+    {
+      "repo": "gwenaellarmet/game-of-thrones",
+      "count": 1
+    },
+    {
+      "repo": "cornflourblue/angular2-alert-notifications",
+      "count": 1
+    }
+  ],
+  "calendar": {
+    "total": 1084,
+    "weeks": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        1,
+        1,
+        1,
+        2
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        2,
+        1,
+        1,
+        1,
+        3,
+        2
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      [
+        1,
+        3,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        2,
+        0,
+        1,
+        4,
+        1,
+        2,
+        1
+      ],
+      [
+        4,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3
+      ],
+      [
+        1,
+        1,
+        1,
+        3,
+        1,
+        1,
+        2
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      [
+        1
+      ]
+    ]
+  }
+}

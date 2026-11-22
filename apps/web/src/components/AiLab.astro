@@ -1,0 +1,643 @@
+---
+import type { Project } from '../lib/projects'
+import SectionHead from './SectionHead.astro'
+
+interface Props {
+  projects: Project[]
+}
+const { projects } = Astro.props
+
+/** Repos with a hand-built preview below. Any other `ai` project gets a plain card. */
+const FEATURED = ['spectatui', 'aikill', 'ai-plugins', 'claude-mods']
+const byName = new Map(projects.map(p => [p.name, p]))
+const others = projects.filter(p => p.category === 'ai' && !FEATURED.includes(p.name))
+const url = (name: string) => byName.get(name)?.url ?? `https://github.com/tinesoft/${name}`
+const isNew = (name: string) => byName.get(name)?.isNew ?? false
+const spectatui = byName.get('spectatui')
+
+const stages = ['specify', 'plan', 'tasks', 'implement']
+const kills = [
+  ['~/.claude/projects', 'SAFE', '1.4 GB'],
+  ['~/.codex/sessions', 'SAFE', '820 MB'],
+  ['~/.cursor/extensions', 'REVIEW', '2.1 GB'],
+  ['~/dev/old-app/.copilot', 'SAFE', '310 MB'],
+  ['~/.claude/settings.json', 'KEEP', '4 KB'],
+]
+const chips = [
+  ['skill', 'frontend-design', 'main'],
+  ['agent', 'Explore', 'alt'],
+  ['mcp', 'github', 'main'],
+  ['hook', 'pre-commit', 'alt'],
+  ['rule', 'CLAUDE.md', 'main'],
+  ['perm', 'Bash(npm test)', 'alt'],
+]
+---
+
+<section id="ai" class="ai container">
+  <SectionHead module="module 02 · ai lab" title="Tools for developers who work with agents" />
+  <p class="intro">
+    The newest drawer of the toolbox: terminal dashboards, Claude Code plugins and mods, and agent
+    skills that make AI-assisted engineering more visible, tidier and more disciplined.
+  </p>
+
+  <div class="grid">
+    <a href={url('spectatui')} class="card lab" id="lab-spectatui">
+      <div class="meta">
+        <span class="repo">spectatui</span>
+        <span>★ {spectatui?.starsLabel ?? '—'} · rust · tui</span>
+      </div>
+      <h3>A terminal dashboard for GitHub Spec-Kit</h3>
+      <p>
+        Browse specs, plans and tasks, track each workflow stage and attach to agent tmux sessions,
+        refreshing live as files change.
+      </p>
+      <div class="console preview" aria-hidden="true">
+        <div class="pv-head">
+          <span>specs/ › 004-feature</span>
+          <span class="accent flex">
+            <span class="live"></span>auto-refresh
+          </span>
+        </div>
+        <div class="rail">
+          {stages.map((label, i) => (
+            <div class="stage" data-i={i}>
+              <span class="line" />
+              <span class="node">{i + 1}</span>
+              <span class="stage-label">{label}</span>
+            </div>
+          ))}
+        </div>
+        <div class="tasks">
+          <span>tasks</span>
+          <span class="track">
+            <span class="fill" id="spec-fill"></span>
+          </span>
+          <span>
+            <span id="spec-done">0</span>/12
+          </span>
+        </div>
+      </div>
+      <div class="cmd">cargo install spectatui</div>
+    </a>
+
+    <a href={url('aikill')} class="card lab" id="lab-aikill">
+      <div class="meta">
+        <span class="flex">
+          <span class="repo">aikill</span>
+          {isNew('aikill') && <span class="badge-new">NEW</span>}
+        </span>
+        <span>rust · tui + cli</span>
+      </div>
+      <h3>npkill, for what AI agents leave behind</h3>
+      <p>
+        Finds leftover state from 20 coding agents, triages it as Safe, Review or Keep, and keeps
+        deletions restorable for 7 days.
+      </p>
+      <div class="console preview kills" aria-hidden="true">
+        {kills.map(([path, risk, size]) => (
+          <div class="kill" data-risk={risk}>
+            <span class="path">{path}</span>
+            <span class="risk">{risk}</span>
+            <span class="size">{size}</span>
+          </div>
+        ))}
+        <div class="reclaim">
+          <span>sample scan · reclaimable (safe)</span>
+          <span class="accent strong">
+            <span id="reclaim">2.53</span> GB
+          </span>
+        </div>
+      </div>
+      <div class="cmd">npx aikill</div>
+    </a>
+
+    <a href={url('ai-plugins')} class="card lab" id="lab-plugins">
+      <div class="meta">
+        <span class="flex">
+          <span class="repo">ai-plugins</span>
+          {isNew('ai-plugins') && <span class="badge-new">NEW</span>}
+        </span>
+        <span>claude code plugins</span>
+      </div>
+      <h3>Claude Code plugins for everyday flow</h3>
+      <div class="plugins">
+        <div>
+          <span class="mono accent strong">git-flow</span>{' '}
+          <span class="muted">lands PRs by rebase after green CI, and blocks merge commits.</span>
+        </div>
+        <div>
+          <span class="mono accent strong">context-kit</span>{' '}
+          <span class="muted">a status line for model, git, context, cost and rate limits.</span>
+        </div>
+        <div>
+          <span class="mono accent strong">mattpocock-extras</span>{' '}
+          <span class="muted">parallel subagents in worktrees, plus .scratch linting.</span>
+        </div>
+      </div>
+      <div class="console preview status" aria-hidden="true">
+        <div class="statusline">
+          <span class="alt">opus</span>
+          <span>·</span>
+          <span>main ✓</span>
+          <span>·</span>
+          <span>ctx</span>
+          <span class="ctx-track">
+            <span class="fill" id="ctx-fill"></span>
+          </span>
+          <span id="ctx-pct" class="ctx-num">
+            20%
+          </span>
+          <span>·</span>
+          <span>rate ok</span>
+        </div>
+        <div class="warn chipin" id="ctx-warn" hidden>
+          ! context almost full: hand off to a fresh session
+        </div>
+      </div>
+      <div class="cmd">
+        claude plugin install &lt;plugin-name&gt; --marketplace tinesoft/ai-plugins@main
+      </div>
+    </a>
+
+    <a href={url('claude-mods')} class="card lab" id="lab-mods">
+      <div class="meta">
+        <span class="repo">claude-mods</span>
+        <span>claude code mods</span>
+      </div>
+      <h3>See what took part in your session</h3>
+      <p>
+        <span class="mono accent">session-activity</span> shows a live chip for every skill,
+        subagent, MCP server, permission, hook and rule. <span class="mono accent">craftory</span>{' '}
+        adds a phase rail from idea to merged PR.
+      </p>
+      <div class="console preview" aria-hidden="true">
+        <div class="chips" id="session-chips">
+          {chips.map(([kind, name, tone]) => (
+            <span class="schip chipin" data-tone={tone}>
+              <span class="sdot" />
+              <span class="muted">{kind}</span>
+              {name}
+            </span>
+          ))}
+        </div>
+        <div class="prompt">
+          <span class="accent">›</span>refactor the auth module<span class="caret"></span>
+        </div>
+      </div>
+      <div class="cmd">claude plugin marketplace add tinesoft/claude-mods@main</div>
+    </a>
+
+    {others.map(p => (
+      <a href={p.url} class="card lab">
+        <div class="meta">
+          <span class="flex">
+            <span class="repo">{p.name}</span>
+            {p.isNew && <span class="badge-new">NEW</span>}
+          </span>
+          <span>
+            ★ {p.starsLabel} · {p.language.toLowerCase()}
+          </span>
+        </div>
+        <p>{p.description}</p>
+        <div class="tags">
+          {p.tags.map(t => (
+            <span class="tag">{t}</span>
+          ))}
+        </div>
+      </a>
+    ))}
+  </div>
+  <p class="fine">
+    Previews are illustrative. New AI repos land in this section automatically when the sync job
+    classifies them as ai &amp; agents.
+  </p>
+</section>
+
+<script>
+  import { every } from '../scripts/motion'
+
+  // spectatui: the stage rail advances every ~2 s while tasks tick off.
+  const stages = [...document.querySelectorAll<HTMLElement>('#lab-spectatui .stage')]
+  const specFill = document.getElementById('spec-fill')!
+  const specDone = document.getElementById('spec-done')!
+  every(
+    document.getElementById('lab-spectatui'),
+    240,
+    tick => {
+      const active = Math.floor(tick / 8) % stages.length
+      stages.forEach((s, i) => {
+        s.dataset.state = i < active ? 'done' : i === active ? 'active' : 'todo'
+        s.querySelector('.node')!.textContent = i < active ? '✓' : String(i + 1)
+      })
+      const done = tick % 13
+      specDone.textContent = String(done)
+      specFill.style.width = `${Math.round((done / 12) * 100)}%`
+    },
+    10,
+  )
+
+  // aikill: a highlighted row walks the scan while the reclaimable total counts up.
+  const kills = [...document.querySelectorAll<HTMLElement>('#lab-aikill .kill')]
+  const reclaim = document.getElementById('reclaim')!
+  every(
+    document.getElementById('lab-aikill'),
+    120,
+    tick => {
+      const hot = Math.floor(tick / 4) % kills.length
+      kills.forEach((k, i) => k.classList.toggle('hot', i === hot))
+      reclaim.textContent = (2.53 * Math.min(1, (tick % 73) / 40)).toFixed(2)
+    },
+    40,
+  )
+
+  // ai-plugins: the context meter fills, then warns past 85%.
+  const ctxFill = document.getElementById('ctx-fill')!
+  const ctxPct = document.getElementById('ctx-pct')!
+  const ctxWarn = document.getElementById('ctx-warn')!
+  const ctxStatus = document.querySelector<HTMLElement>('#lab-plugins .status')!
+  every(
+    document.getElementById('lab-plugins'),
+    120,
+    tick => {
+      const pct = 20 + (tick % 76)
+      ctxFill.style.width = `${pct}%`
+      ctxPct.textContent = `${pct}%`
+      ctxStatus.dataset.warn = String(pct >= 85)
+      ctxWarn.hidden = pct < 85
+    },
+    42,
+  )
+
+  // claude-mods: session chips appear one by one, then reset.
+  const chips = [...document.querySelectorAll<HTMLElement>('#session-chips .schip')]
+  every(
+    document.getElementById('lab-mods'),
+    1200,
+    tick => {
+      const n = 1 + (tick % (chips.length + 2))
+      chips.forEach((c, i) => (c.hidden = i >= n))
+    },
+    chips.length,
+  )
+</script>
+
+<style>
+  .ai {
+    padding-top: 104px;
+  }
+
+  .intro {
+    margin: 12px 0 0;
+    max-width: 46em;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .grid {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+    gap: 16px;
+  }
+
+  .lab {
+    display: flex;
+    flex-direction: column;
+    padding: 26px;
+    border-radius: 20px;
+    min-width: 0;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font: 500 12px var(--mono);
+    color: var(--muted);
+  }
+
+  .repo {
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .strong {
+    font-weight: 700;
+  }
+
+  .alt {
+    color: var(--acc2);
+  }
+
+  .lab .badge-new {
+    padding: 2px 7px;
+    font-size: 10px;
+  }
+
+  h3 {
+    margin: 14px 0 0;
+    font: 700 24px var(--display);
+  }
+
+  .lab p {
+    margin: 8px 0 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  .preview {
+    margin-top: 20px;
+    padding: 14px;
+  }
+
+  .pv-head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .pv-head .live {
+    width: 6px;
+    height: 6px;
+  }
+
+  .rail {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .stage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    --ring: var(--border);
+  }
+
+  .stage .line {
+    position: absolute;
+    top: 11px;
+    left: -50%;
+    right: 50%;
+    height: 2px;
+    background: var(--border);
+    transition: background 0.4s;
+  }
+
+  .stage:first-child .line {
+    background: transparent;
+  }
+
+  .stage:not(:first-child)[data-state='done'] .line,
+  .stage:not(:first-child)[data-state='active'] .line {
+    background: var(--acc);
+  }
+
+  .node {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 99px;
+    border: 2px solid var(--border);
+    background: var(--console);
+    color: var(--border);
+    display: grid;
+    place-items: center;
+    font: 700 11px var(--mono);
+    transition: all 0.4s;
+  }
+
+  .stage[data-state='done'] .node,
+  .stage[data-state='active'] .node {
+    border-color: var(--acc);
+    color: var(--acc);
+  }
+
+  .stage[data-state='done'] .node {
+    background: var(--acc-soft);
+  }
+
+  .stage-label {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .stage[data-state='active'] .stage-label {
+    color: var(--text);
+  }
+
+  .tasks {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .track,
+  .ctx-track {
+    height: 6px;
+    border-radius: 9px;
+    background: var(--surface2);
+    overflow: hidden;
+  }
+
+  .track {
+    flex: 1;
+  }
+
+  .ctx-track {
+    width: 90px;
+  }
+
+  .fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--acc);
+    transition:
+      width 0.3s,
+      background 0.3s;
+  }
+
+  .kills {
+    padding: 8px 0;
+    font-size: 12px;
+  }
+
+  .kill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px;
+    transition: background 0.2s;
+  }
+
+  .kill.hot {
+    background: var(--acc-soft);
+  }
+
+  .path {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .risk {
+    flex: none;
+    width: 58px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+
+  .kill[data-risk='SAFE'] .risk {
+    color: var(--acc);
+  }
+
+  .kill[data-risk='REVIEW'] .risk {
+    color: var(--amber);
+  }
+
+  .size {
+    flex: none;
+    width: 58px;
+    text-align: right;
+    color: var(--muted);
+  }
+
+  .reclaim {
+    margin-top: 4px;
+    padding: 8px 14px 4px;
+    border-top: 1px dashed var(--border);
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+  }
+
+  .plugins {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .status {
+    margin-top: 18px;
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+
+  .statusline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+  }
+
+  .ctx-num {
+    color: var(--acc);
+  }
+
+  .status[data-warn='true'] .ctx-num,
+  .warn {
+    color: var(--amber);
+  }
+
+  .status[data-warn='true'] .fill {
+    background: var(--amber);
+  }
+
+  .warn {
+    margin-top: 8px;
+  }
+
+  .warn[hidden] {
+    display: none;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 62px;
+    align-content: flex-start;
+  }
+
+  .schip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 9px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font: 500 12px var(--mono);
+  }
+
+  .schip[hidden] {
+    display: none;
+  }
+
+  .sdot {
+    width: 6px;
+    height: 6px;
+    border-radius: 9px;
+    background: var(--acc);
+  }
+
+  .schip[data-tone='alt'] .sdot {
+    background: var(--acc2);
+  }
+
+  .prompt {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font: 400 13px var(--mono);
+    color: var(--muted);
+  }
+
+  .tags {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--surface2);
+    font: 500 12px var(--mono);
+    color: var(--muted);
+  }
+
+  .fine {
+    margin: 16px 0 0;
+    font: 400 12px var(--mono);
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,489 @@
+---
+interface Props {
+  mergedPrs: number
+}
+const { mergedPrs } = Astro.props
+
+const greetings = [
+  '"fr - 🇫🇷" → "Bonjour!"',
+  '"en - 🇬🇧" → "Hello!"',
+  '"lb - 🇱🇺" → "Moien!"',
+  '"ifè - 🇹🇬" → "N’Koni!"',
+]
+const words = ['developers', 'maintainers', 'AI agents', 'teams']
+const lines = [
+  { prefix: '$', text: 'agent run --goal "make developers’ lives better"', kind: 'cmd' },
+  { prefix: '›', text: 'scanning github.com/tinesoft …', kind: 'log' },
+  { prefix: '›', text: 'found plugins · CLIs · libraries · claude mods', kind: 'log' },
+  { prefix: '›', text: `${mergedPrs} PRs merged, still shipping`, kind: 'log' },
+  { prefix: '✓', text: 'ready. pick a tool below', kind: 'ok' },
+]
+const meters = [
+  ['CPU / coffee', 'var(--acc)'],
+  ['open PRs', 'var(--acc2)'],
+  ['ideas queued', 'var(--acc)'],
+]
+---
+
+<section class="hero container">
+  <div>
+    <div class="greeting rise" aria-live="off">
+      <span class="live"></span>
+      <span class="muted">greeting =</span>
+      <span class="accent strong" id="greeting" data-greetings={JSON.stringify(greetings)}>
+        {greetings[0]}
+      </span>
+    </div>
+    <h1 class="title rise d1">
+      I build open-source tools that make <span class="visually-hidden">developers</span>
+      <span class="word" id="scramble" aria-hidden="true" data-words={JSON.stringify(words)}>
+        {words[0]}
+      </span>{' '}
+      unstoppable.
+    </h1>
+    <p class="lede rise d2">
+      I'm Tine Kondo, a Senior Staff Engineer who fell in love with open source and never stopped
+      contributing. I publish plugins, CLIs, terminal UIs, libraries, Claude Code plugins and mods,
+      and agent skills: anything that improves developer experience and helps teams ship great
+      products to their users.
+    </p>
+    <div class="ctas rise d3">
+      <a href="#tools" class="cta primary btn">
+        Browse the tools
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6"></path>
+        </svg>
+      </a>
+      <a href="https://github.com/tinesoft" class="cta secondary btn">
+        Contribute on GitHub
+      </a>
+    </div>
+  </div>
+
+  <div class="hud rise d2">
+    <svg aria-hidden="true" viewBox="0 0 520 520" class="rings" preserveAspectRatio="none">
+      <g class="spin">
+        <circle
+          cx="260"
+          cy="260"
+          r="250"
+          fill="none"
+          stroke="var(--border)"
+          stroke-dasharray="2 10"
+        ></circle>
+      </g>
+      <g class="spinrev">
+        <circle
+          cx="260"
+          cy="260"
+          r="232"
+          fill="none"
+          stroke="var(--acc)"
+          stroke-opacity=".35"
+          stroke-width="1.5"
+          stroke-dasharray="60 40 8 40"
+        ></circle>
+      </g>
+      <path d="M0 120 H90 V60 H200" class="trace"></path>
+      <path d="M520 400 H430 V470 H300" class="trace"></path>
+      <path d="M40 520 V430 H140" class="trace"></path>
+      <path class="packet" d="M0 120 H90 V60 H200" stroke="var(--acc)"></path>
+      <path class="packet p2" d="M520 400 H430 V470 H300" stroke="var(--acc2)"></path>
+      <path class="packet p3" d="M40 520 V430 H140" stroke="var(--acc)"></path>
+    </svg>
+    <div class="window">
+      <div class="bar">
+        <div class="lights" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span>tine@oss — agent session</span>
+        <span class="online">
+          <span class="live"></span>online
+        </span>
+      </div>
+      <div class="screen">
+        <div aria-hidden="true" class="scan"></div>
+        <div class="visually-hidden">{lines.map(l => `${l.prefix} ${l.text}`).join('\n')}</div>
+        <div id="console" aria-hidden="true" data-lines={JSON.stringify(lines)}>
+          {lines.map(l => (
+            <div class="row" data-kind={l.kind}>
+              <span class="prefix">{l.prefix}</span>
+              <span class="text">{l.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="meters" id="meters">
+        {meters.map(([label, color]) => (
+          <div class="meter">
+            <div class="label">{label}</div>
+            <div class="track">
+              <div class="level" style={`background: ${color}`} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { every } from '../scripts/motion'
+
+  // Greeting rotates every 2.2 s.
+  const greeting = document.getElementById('greeting')!
+  const greetings = JSON.parse(greeting.dataset.greetings!) as string[]
+  every(greeting, 2200, t => (greeting.textContent = greetings[t % greetings.length]!))
+
+  // Scrambled word: resolves one letter every two ticks, holds, then moves on.
+  const word = document.getElementById('scramble')!
+  const words = JSON.parse(word.dataset.words!) as string[]
+  const glyphs = '01<>/#*+=_$%&{}[]'
+  let wi = 0
+  let sp = 0
+  let hold = 0
+  every(
+    word,
+    40,
+    tick => {
+      const w = words[wi]!
+      if (hold > 0) {
+        if (--hold === 0) {
+          wi = (wi + 1) % words.length
+          sp = 0
+        }
+      } else if (sp < w.length * 2) sp++
+      else hold = 70
+      const solved = Math.floor(sp / 2)
+      word.textContent = [...w]
+        .map((ch, i) =>
+          i < solved || ch === ' ' ? ch : glyphs[(i * 7 + tick * 3) % glyphs.length],
+        )
+        .join('')
+    },
+    0,
+  )
+
+  // Console: types each line, pauses, loops after the last.
+  const screen = document.getElementById('console')!
+  type Line = { prefix: string; text: string; kind: string }
+  const lines = JSON.parse(screen.dataset.lines!) as Line[]
+  const rows = [...screen.querySelectorAll<HTMLElement>('.row')]
+  const caret = Object.assign(document.createElement('span'), { className: 'caret' })
+  let line = 0
+  let ch = 0
+  let pause = 0
+  const paint = () =>
+    rows.forEach((row, i) => {
+      row.hidden = i > line
+      const text = row.querySelector('.text')!
+      text.textContent = i < line ? lines[i]!.text : lines[i]!.text.slice(0, ch)
+      if (i === line) text.append(caret)
+    })
+  every(screen, 40, tick => {
+    if (tick === 0) return paint()
+    const cur = lines[line]!
+    if (pause > 0) {
+      if (--pause === 0) {
+        line = line < lines.length - 1 ? line + 1 : 0
+        ch = 0
+      }
+    } else if (ch < cur.text.length) ch++
+    else pause = line === lines.length - 1 ? 90 : 14
+    paint()
+  })
+
+  // Meters drift on a sine wave.
+  const levels = [...document.querySelectorAll<HTMLElement>('#meters .level')]
+  every(document.getElementById('meters'), 400, tick =>
+    levels.forEach(
+      (el, n) => (el.style.width = `${Math.round(45 + 35 * Math.sin(tick / 2.5 + n * 2))}%`),
+    ),
+  )
+</script>
+
+<style>
+  .hero {
+    padding-top: 88px;
+    padding-bottom: 64px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+    gap: 64px;
+    align-items: center;
+  }
+
+  .greeting {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px 8px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font: 13px var(--mono);
+  }
+
+  .greeting .live {
+    width: 8px;
+    height: 8px;
+  }
+
+  .strong {
+    font-weight: 700;
+  }
+
+  .title {
+    margin: 28px 0 0;
+    font: 700 clamp(42px, 5.6vw, 72px) / 1.04 var(--display);
+    letter-spacing: -0.035em;
+  }
+
+  .word {
+    display: inline-block;
+    min-width: 7ch;
+    font-family: var(--mono);
+    letter-spacing: -0.05em;
+    color: var(--acc);
+  }
+
+  .lede {
+    margin: 24px 0 0;
+    max-width: 35em;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .ctas {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cta {
+    height: 48px;
+    padding: 0 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .primary {
+    background: var(--acc);
+    color: var(--acc-ink);
+  }
+
+  .secondary {
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .hud {
+    position: relative;
+    padding: 28px;
+  }
+
+  .rings {
+    position: absolute;
+    inset: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .spin,
+  .spinrev {
+    transform-origin: 50% 50%;
+    transform-box: fill-box;
+  }
+
+  .spin {
+    animation: spin 22s linear infinite;
+  }
+
+  .spinrev {
+    animation: spin 14s linear infinite reverse;
+  }
+
+  .trace,
+  .packet {
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .trace {
+    stroke: var(--border);
+  }
+
+  .packet {
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 3 257;
+    animation: flow 3.2s linear infinite;
+  }
+
+  .packet.p2 {
+    animation-duration: 4.4s;
+    animation-delay: -1.2s;
+  }
+
+  .packet.p3 {
+    animation-duration: 3.8s;
+    animation-delay: -2.4s;
+  }
+
+  .window {
+    position: relative;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: var(--console);
+    overflow: hidden;
+    box-shadow: 0 30px 80px -40px var(--shadow);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font: 12px var(--mono);
+    color: var(--muted);
+  }
+
+  .lights {
+    display: flex;
+    gap: 7px;
+  }
+
+  .lights span {
+    width: 11px;
+    height: 11px;
+    border-radius: 99px;
+    background: var(--border);
+  }
+
+  .online {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--acc);
+  }
+
+  .screen {
+    position: relative;
+    padding: 22px 22px 26px;
+    min-height: 250px;
+    font: 14px / 1.85 var(--mono);
+  }
+
+  .scan {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 40px;
+    background: linear-gradient(180deg, transparent, var(--scan), transparent);
+    pointer-events: none;
+    animation: scan 4.5s linear infinite;
+  }
+
+  .row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .row[hidden] {
+    display: none;
+  }
+
+  .prefix {
+    flex: none;
+    color: var(--muted);
+  }
+
+  .row[data-kind='cmd'] .prefix {
+    color: var(--acc2);
+  }
+
+  .row[data-kind='ok'] .prefix {
+    color: var(--acc);
+  }
+
+  .row[data-kind='log'] .text {
+    color: var(--muted);
+  }
+
+  .meters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+  }
+
+  .meter {
+    padding: 12px 16px;
+  }
+
+  .meter + .meter {
+    border-left: 1px solid var(--border);
+  }
+
+  .label {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .track {
+    margin-top: 6px;
+    height: 4px;
+    border-radius: 9px;
+    background: var(--surface2);
+  }
+
+  .level {
+    height: 100%;
+    width: 60%;
+    border-radius: 9px;
+    transition: width 0.4s;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes flow {
+    to {
+      stroke-dashoffset: -260;
+    }
+  }
+
+  @keyframes scan {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(900%);
+    }
+  }
+</style>

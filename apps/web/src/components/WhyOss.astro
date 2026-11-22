@@ -1,0 +1,116 @@
+---
+import SectionHead from './SectionHead.astro'
+
+const principles = [
+  [
+    'DevEx is a feature.',
+    'If a tool saves an engineer ten minutes a day, it ships better products to real users.',
+  ],
+  ['Upstream first.', 'Fix it where everyone benefits, not just in my fork.'],
+  ['Agents are teammates.', 'Make what they do visible and give them good process.'],
+]
+type Part = string | { str: string }
+const strs = (...items: string[]): Part[] =>
+  items.flatMap((s, i) => (i ? [', ', { str: `'${s}'` }] : [{ str: `'${s}'` }]))
+const config: [number, Part[]][] = [
+  [1, ['role: ', { str: "'Senior Staff Engineer'" }, ',']],
+  [1, ['loves: ', { str: "'open source'" }, ',']],
+  [1, ['badges: [', ...strs('Nx Champion', 'OSS Maintainer'), '],']],
+  [1, ['ships: [', ...strs('plugins', 'CLIs', 'libraries'), ',']],
+  [2, [...strs('claude mods', 'agent skills'), '],']],
+  [1, ['askMeAbout: [', ...strs('Spring', 'Angular', 'Testing', 'AI DevEx'), '],']],
+  [1, ['stack: [', ...strs('Java', 'TypeScript', 'Spring', 'Angular'), ',']],
+  [2, [...strs('Nx', 'MongoDB', 'Elasticsearch', 'Docker'), '],']],
+  [1, ['basedIn: ', { str: "'Luxembourg'" }, ',']],
+  [1, ['pronouns: ', { str: "'he/him'" }, ',']],
+]
+---
+
+<section id="oss" class="oss container">
+  <div>
+    <SectionHead module="module 04 · system prompt" title="Why I build in the open" />
+    <p class="body">
+      Open source taught me a lot of what I know, so contributing back is how I say thanks. By day
+      I'm a Senior Staff Engineer and team lead; by night and on weekends I maintain tools that
+      thousands of developers rely on, and I review, fix and improve the projects I depend on.
+    </p>
+    <ol class="principles">
+      {principles.map(([title, text], i) => (
+        <li class="panel">
+          <span class="n">{String(i + 1).padStart(2, '0')}</span>
+          <span>
+            <strong>{title}</strong> <span class="muted">{text}</span>
+          </span>
+        </li>
+      ))}
+    </ol>
+  </div>
+  <div class="config console">
+    <div class="muted">// agent.config.ts</div>
+    <div>
+      <span class="kw">export const</span> tine = {'{'}
+    </div>
+    {config.map(([indent, parts]) => (
+      <div style={`padding-left: ${indent * 20}px`}>
+        {parts.map(p => (typeof p === 'string' ? p : <span class="str">{p.str}</span>))}
+      </div>
+    ))}
+    <div>{'};'}</div>
+  </div>
+</section>
+
+<style>
+  .oss {
+    padding-top: 104px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+    gap: 48px;
+  }
+
+  .body {
+    margin: 20px 0 0;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .principles {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .principles li {
+    display: flex;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .n {
+    font: 700 13px var(--mono);
+    color: var(--acc);
+  }
+
+  .config {
+    align-self: start;
+    white-space: nowrap;
+    border-radius: 18px;
+    padding: 26px;
+    font: 400 14px / 1.9 var(--mono);
+    overflow-x: auto;
+  }
+
+  .kw {
+    color: var(--acc2);
+  }
+
+  .str {
+    color: var(--acc);
+  }
+</style>

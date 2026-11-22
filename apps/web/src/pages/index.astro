@@ -1,0 +1,78 @@
+---
+import Activity from '../components/Activity.astro'
+import AiLab from '../components/AiLab.astro'
+import Boot from '../components/Boot.astro'
+import Contact from '../components/Contact.astro'
+import Footer from '../components/Footer.astro'
+import Hero from '../components/Hero.astro'
+import Marquee from '../components/Marquee.astro'
+import Nav from '../components/Nav.astro'
+import Stats from '../components/Stats.astro'
+import Tools from '../components/Tools.astro'
+import WhyOss from '../components/WhyOss.astro'
+import snapshotJson from '../data/github.json'
+import { topUpstream } from '../lib/activity'
+import { toProjects } from '../lib/projects'
+import type { Snapshot } from '../lib/types'
+import Base from '../layouts/Base.astro'
+
+const snapshot = snapshotJson as Snapshot
+const now = new Date()
+const projects = toProjects(snapshot.repos, now)
+const top = projects[0]
+const [upstream] = topUpstream(snapshot.upstream, 1)
+
+const stats = [
+  { key: 'MERGED_PRS', value: snapshot.mergedPrs, suffix: '+', label: 'pull requests merged' },
+  {
+    key: 'TOP_REPO',
+    value: top?.stars ?? 0,
+    suffix: '★',
+    label: `stars on ${top?.name ?? 'GitHub'}`,
+  },
+  {
+    key: 'UPSTREAM',
+    value: upstream?.count ?? 0,
+    suffix: '',
+    label: `PRs to ${upstream?.repo ?? 'upstream'}`,
+  },
+  {
+    key: 'AI_TOOLS',
+    value: projects.filter(p => p.category === 'ai').length,
+    suffix: '',
+    label: 'AI & agent tools shipped',
+  },
+]
+
+const marquee = [
+  ...projects.filter(p => p.isNew || p.stars >= 50).map(p => p.name),
+  'git-flow',
+  'context-kit',
+  'agent skills',
+  'DevEx',
+  'open source',
+  'Nx Champion',
+]
+---
+
+<Base
+  title="tinesoft — Tine Kondo, open source tools for developers"
+  description="Tine Kondo builds open-source plugins, CLIs, terminal UIs, libraries, Claude Code plugins and mods, and agent skills that improve developer experience."
+>
+  <Boot />
+  <Nav />
+  <main id="top">
+    <Hero mergedPrs={snapshot.mergedPrs} />
+    <Marquee items={marquee} />
+    <Stats stats={stats} />
+    <Tools projects={projects} />
+    <AiLab projects={projects} />
+    <Activity snapshot={snapshot} now={now} />
+    <WhyOss />
+    <Contact />
+  </main>
+  <Footer />
+  <script>
+    import '../scripts/pwa'
+  </script>
+</Base>

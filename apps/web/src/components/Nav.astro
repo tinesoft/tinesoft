@@ -1,0 +1,271 @@
+---
+import Logo from './Logo.astro'
+
+const links = [
+  ['#tools', 'Tools'],
+  ['#ai', 'AI lab'],
+  ['#activity', 'Activity'],
+  ['#oss', 'Why OSS'],
+  ['#contact', 'Contact'],
+]
+const swatches = [
+  { id: 'mint', label: 'Mint accent', dark: '#6EE7B7', light: '#047857' },
+  { id: 'terracotta', label: 'Terracotta accent', dark: '#E2876A', light: '#B4532F' },
+]
+---
+
+<header class="header">
+  <nav aria-label="Main" class="nav">
+    <a href="#top" class="brand">
+      <Logo />
+      <span>
+        tinesoft<span class="caret"></span>
+      </span>
+    </a>
+    <div class="actions">
+      {links.map(([href, label]) => (
+        <a href={href} class="link">
+          {label}
+        </a>
+      ))}
+      <div role="group" aria-label="Accent color" class="swatches">
+        {swatches.map(sw => (
+          <button
+            type="button"
+            class="swatch"
+            data-accent={sw.id}
+            aria-label={sw.label}
+            aria-pressed={sw.id === 'mint' ? 'true' : 'false'}
+            style={`--sw-dark: ${sw.dark}; --sw-light: ${sw.light}`}
+          >
+            <span />
+          </button>
+        ))}
+      </div>
+      <button type="button" class="pill btn" id="install" hidden>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 3v12"></path>
+          <path d="m7 10 5 5 5-5"></path>
+          <path d="M5 21h14"></path>
+        </svg>
+        Install app
+      </button>
+      <button type="button" class="round btn" id="theme-toggle" aria-label="Switch to light theme">
+        <svg
+          class="sun"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+        </svg>
+        <svg
+          class="moon"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<script>
+  import {
+    currentAccent,
+    currentTheme,
+    onPreferencesChange,
+    setAccent,
+    setTheme,
+    type Accent,
+  } from '../scripts/preferences'
+
+  const toggle = document.getElementById('theme-toggle')!
+  const swatches = [...document.querySelectorAll<HTMLButtonElement>('.swatch')]
+
+  const render = () => {
+    const dark = currentTheme() === 'dark'
+    toggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme')
+    for (const sw of swatches)
+      sw.setAttribute('aria-pressed', String(sw.dataset.accent === currentAccent()))
+  }
+
+  toggle.addEventListener('click', () => setTheme(currentTheme() === 'dark' ? 'light' : 'dark'))
+  for (const sw of swatches)
+    sw.addEventListener('click', () => setAccent(sw.dataset.accent as Accent))
+  onPreferencesChange(render)
+  render()
+
+  // "Install app" appears only where the browser offers installation.
+  const install = document.getElementById('install')!
+  let deferred: (Event & { prompt(): Promise<void> }) | null = null
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault()
+    deferred = e as typeof deferred
+    install.hidden = false
+  })
+  install.addEventListener('click', async () => {
+    await deferred?.prompt()
+    deferred = null
+    install.hidden = true
+  })
+  window.addEventListener('appinstalled', () => (install.hidden = true))
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: 700 18px var(--mono);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .link {
+    padding: 10px 11px;
+    color: var(--muted);
+  }
+
+  .link:hover {
+    color: var(--text);
+  }
+
+  .swatches {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 44px;
+    padding: 0 6px;
+    margin-left: 4px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .swatch {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background: var(--surface);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition:
+      border-color 0.2s,
+      transform 0.15s;
+  }
+
+  .swatch:hover {
+    transform: translateY(-1px);
+  }
+
+  .swatch[aria-pressed='true'] {
+    border-color: var(--text);
+  }
+
+  .swatch span {
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: var(--sw-dark);
+  }
+
+  :global([data-theme='light']) .swatch span {
+    background: var(--sw-light);
+  }
+
+  .pill,
+  .round {
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  .pill {
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font: 500 13px var(--sans);
+  }
+
+  .pill[hidden] {
+    display: none;
+  }
+
+  .round {
+    width: 44px;
+    display: grid;
+    place-items: center;
+  }
+
+  .moon {
+    display: none;
+  }
+
+  :global([data-theme='light']) .sun {
+    display: none;
+  }
+
+  :global([data-theme='light']) .moon {
+    display: block;
+  }
+</style>

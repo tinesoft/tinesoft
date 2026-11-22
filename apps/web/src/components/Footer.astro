@@ -1,0 +1,21 @@
+---
+const year = new Date().getFullYear()
+---
+
+<footer class="footer container">
+  <span>© {year} Tine Kondo · tinesoft.com</span>
+  <span>static build · synced daily by GitHub Actions · works offline</span>
+</footer>
+
+<style>
+  .footer {
+    padding-top: 64px;
+    padding-bottom: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    font: 400 13px var(--mono);
+    color: var(--muted);
+  }
+</style>

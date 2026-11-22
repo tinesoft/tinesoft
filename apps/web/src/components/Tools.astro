@@ -1,0 +1,293 @@
+---
+import type { Project } from '../lib/projects'
+import { CATEGORIES, type Category } from '../lib/site'
+import ProjectCard from './ProjectCard.astro'
+import SectionHead from './SectionHead.astro'
+
+interface Props {
+  projects: Project[]
+}
+const { projects } = Astro.props
+
+const filters: [Category | 'all', string, number][] = [
+  ['all', 'all', projects.length],
+  ...(Object.entries(CATEGORIES) as [Category, string][]).map(
+    ([id, label]): [Category, string, number] => [
+      id,
+      label,
+      projects.filter(p => p.category === id).length,
+    ],
+  ),
+]
+const pipeline = [
+  ['fetch', 'every public repo, its topics, README and latest events', 'fetching repos…'],
+  [
+    'classify',
+    'topics + README + language → ai · plugins · cli · libs',
+    'new repo found → ai & agents',
+  ],
+  ['rank', 'stars, last push and recent activity', 'ranking by popularity…'],
+  ['build', 'static Astro build, PWA manifest, service worker', 'building static site…'],
+  ['deploy', 'GitHub Pages, daily schedule and on every push', 'deployed to tinesoft.com'],
+]
+---
+
+<section id="tools" class="tools container">
+  <SectionHead module="module 01 · toolbox" title="Things I ship for developers" />
+  <div class="head">
+    <p class="sub">Plugins, CLIs, libraries and AI tooling, ranked live from GitHub.</p>
+    <div role="group" aria-label="Sort projects" class="sorts">
+      <button type="button" class="chip sort" data-sort="popular" aria-pressed="true">
+        ★ popular
+      </button>
+      <button type="button" class="chip sort" data-sort="recent" aria-pressed="false">
+        ↻ recent
+      </button>
+    </div>
+  </div>
+  <div role="group" aria-label="Filter projects" class="filters">
+    {filters.map(([id, label, count]) => (
+      <button
+        type="button"
+        class="chip filter"
+        data-filter={id}
+        aria-pressed={id === 'all' ? 'true' : 'false'}
+      >
+        {label} <span class="count">{count}</span>
+      </button>
+    ))}
+  </div>
+
+  <div class="grid" id="project-grid" aria-live="polite">
+    {projects.map(p => (
+      <ProjectCard project={p} />
+    ))}
+  </div>
+
+  <div class="pipeline console" id="pipeline">
+    <div class="pipe-head">
+      <span>.github/workflows/deploy.yml · how this page updates itself</span>
+      <span class="note">
+        <span class="live"></span>
+        <span id="pipe-note">{pipeline[0]![2]}</span>
+      </span>
+    </div>
+    <ol class="steps">
+      {pipeline.map(([name, desc, note]) => (
+        <li class="step" data-note={note}>
+          <div class="step-name">
+            <span class="mark">○</span>
+            {name}
+          </div>
+          <div class="step-desc">{desc}</div>
+        </li>
+      ))}
+    </ol>
+    <p class="fine">
+      Any new public repo is picked up on the next run and sorted by its topics, description and
+      language.
+    </p>
+  </div>
+</section>
+
+<script>
+  import { every } from '../scripts/motion'
+
+  const grid = document.getElementById('project-grid')!
+  const cards = [...grid.querySelectorAll<HTMLElement>('.project')]
+  const filters = [...document.querySelectorAll<HTMLButtonElement>('.filter')]
+  const sorts = [...document.querySelectorAll<HTMLButtonElement>('.sort')]
+  let filter = 'all'
+  let sort: 'popular' | 'recent' = 'popular'
+
+  const render = () => {
+    for (const card of cards) {
+      const rank = Number(sort === 'popular' ? card.dataset.rankPopular : card.dataset.rankRecent)
+      card.style.order = String(rank)
+      card.hidden = filter !== 'all' && card.dataset.category !== filter
+      card.querySelector('.rank')!.textContent = `#${String(rank).padStart(2, '0')}`
+    }
+    filters.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === filter)))
+    sorts.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.sort === sort)))
+  }
+  filters.forEach(b =>
+    b.addEventListener('click', () => {
+      filter = b.dataset.filter!
+      render()
+    }),
+  )
+  sorts.forEach(b =>
+    b.addEventListener('click', () => {
+      sort = b.dataset.sort as typeof sort
+      render()
+    }),
+  )
+
+  // The pipeline walks through its stages.
+  const steps = [...document.querySelectorAll<HTMLElement>('#pipeline .step')]
+  const note = document.getElementById('pipe-note')!
+  every(
+    document.getElementById('pipeline'),
+    1400,
+    tick => {
+      const active = tick % steps.length
+      steps.forEach((s, i) => {
+        s.dataset.state = i < active ? 'done' : i === active ? 'active' : 'todo'
+        s.querySelector('.mark')!.textContent = i < active ? '✓' : i === active ? '▸' : '○'
+      })
+      note.textContent = steps[active]!.dataset.note!
+    },
+    steps.length - 1,
+  )
+</script>
+
+<style>
+  .tools {
+    padding-top: 104px;
+  }
+
+  .head {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .sub {
+    margin: 0;
+    font-size: 16px;
+    color: var(--muted);
+  }
+
+  .sorts {
+    display: flex;
+    padding: 4px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .sort {
+    height: 38px;
+    padding: 0 14px;
+    border-radius: 9px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font: 500 13px var(--mono);
+  }
+
+  .sort[aria-pressed='true'] {
+    background: var(--acc);
+    color: var(--acc-ink);
+  }
+
+  .filters {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filter {
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font: 500 13px var(--mono);
+  }
+
+  .filter[aria-pressed='true'] {
+    background: var(--acc);
+    border-color: var(--acc);
+    color: var(--acc-ink);
+  }
+
+  .count {
+    opacity: 0.7;
+  }
+
+  .grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
+    gap: 16px;
+  }
+
+  .pipeline {
+    margin-top: 28px;
+    border-radius: 18px;
+    padding: 20px;
+    font-family: var(--sans);
+  }
+
+  .pipe-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    font: 500 12px var(--mono);
+    color: var(--muted);
+  }
+
+  .note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--acc);
+  }
+
+  .steps {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 10px;
+  }
+
+  .step {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition:
+      background 0.3s,
+      border-color 0.3s;
+  }
+
+  .step[data-state='active'] {
+    border-color: var(--acc);
+    background: var(--acc-soft);
+  }
+
+  .step-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font: 700 12px var(--mono);
+    color: var(--muted);
+  }
+
+  .step[data-state='done'] .step-name,
+  .step[data-state='active'] .step-name {
+    color: var(--acc);
+  }
+
+  .step-desc {
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--muted);
+  }
+
+  .fine {
+    margin: 14px 0 0;
+    font: 400 12px var(--mono);
+    color: var(--muted);
+  }
+</style>

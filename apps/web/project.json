@@ -1,0 +1,51 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "web",
+  "projectType": "application",
+  "sourceRoot": "apps/web/src",
+  "targets": {
+    "dev": {
+      "metadata": { "description": "Start the Astro dev server." },
+      "executor": "nx:run-commands",
+      "cache": false,
+      "continuous": true,
+      "options": { "command": "astro dev", "cwd": "{projectRoot}" }
+    },
+    "build": {
+      "metadata": { "description": "Build the static site into dist/." },
+      "executor": "nx:run-commands",
+      "options": { "command": "astro build", "cwd": "{projectRoot}" }
+    },
+    "preview": {
+      "metadata": { "description": "Serve the built site from dist/." },
+      "executor": "nx:run-commands",
+      "cache": false,
+      "continuous": true,
+      "dependsOn": ["build"],
+      "options": { "command": "astro preview", "cwd": "{projectRoot}" }
+    },
+    "sync-data": {
+      "metadata": {
+        "description": "Pull public GitHub data into src/data/github.json. GITHUB_TOKEN is optional."
+      },
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": { "command": "tsx scripts/sync.ts", "cwd": "{projectRoot}" }
+    },
+    "lint": {
+      "metadata": { "description": "Lint the app with ESLint." },
+      "executor": "nx:run-commands",
+      "options": { "command": "eslint .", "cwd": "{projectRoot}" }
+    },
+    "typecheck": {
+      "metadata": { "description": "Type-check .astro and .ts files with astro check." },
+      "executor": "nx:run-commands",
+      "options": { "command": "astro check", "cwd": "{projectRoot}" }
+    },
+    "test": {
+      "metadata": { "description": "Run the unit tests with Vitest." },
+      "executor": "nx:run-commands",
+      "options": { "command": "vitest run", "cwd": "{projectRoot}" }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+---
+interface Props {
+  size?: number
+}
+const { size = 32 } = Astro.props
+---
+
+<svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
+  <rect x="3" y="7" width="26" height="20" rx="6" fill="var(--acc)"></rect>
+  <rect x="14.5" y="2" width="3" height="5" rx="1.5" fill="var(--acc)"></rect>
+  <rect class="eye" x="9" y="14" width="4" height="6" rx="2" fill="var(--acc-ink)"></rect>
+  <rect class="eye" x="19" y="14" width="4" height="6" rx="2" fill="var(--acc-ink)"></rect>
+</svg>
+
+<style>
+  .eye {
+    transform-box: fill-box;
+    transform-origin: 50% 0;
+    animation: blink-eye 3.6s infinite;
+  }
+
+  @keyframes blink-eye {
+    0%,
+    95% {
+      transform: none;
+    }
+    96%,
+    100% {
+      transform: scaleY(0.17);
+    }
+  }
+</style>

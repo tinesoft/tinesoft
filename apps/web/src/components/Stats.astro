@@ -1,0 +1,68 @@
+---
+export interface Stat {
+  key: string
+  value: number
+  suffix: string
+  label: string
+}
+interface Props {
+  stats: Stat[]
+}
+const { stats } = Astro.props
+---
+
+<section aria-label="Highlights" class="stats container" id="stats">
+  {stats.map(st => (
+    <div class="stat panel">
+      <div class="key">{st.key}</div>
+      <div class="value">
+        <span data-count={st.value}>{st.value}</span>
+        <span class="accent">{st.suffix}</span>
+      </div>
+      <div class="label">{st.label}</div>
+    </div>
+  ))}
+</section>
+
+<script>
+  import { onceVisible, tween } from '../scripts/motion'
+
+  const nums = [...document.querySelectorAll<HTMLElement>('#stats [data-count]')]
+  onceVisible(document.getElementById('stats'), () =>
+    tween(1800, k =>
+      nums.forEach(el => (el.textContent = String(Math.round(Number(el.dataset.count) * k)))),
+    ),
+  )
+</script>
+
+<style>
+  .stats {
+    padding-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .stat {
+    padding: 24px;
+    border-radius: 16px;
+  }
+
+  .key {
+    font: 500 11px var(--mono);
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  .value {
+    margin-top: 10px;
+    font: 700 40px var(--display);
+    letter-spacing: -0.02em;
+  }
+
+  .label {
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,201 @@
+---
+import type { Project } from '../lib/projects'
+import { CATEGORIES } from '../lib/site'
+
+interface Props {
+  project: Project
+}
+const { project: p } = Astro.props
+
+const tone = p.category === 'plugins' || p.category === 'cli' ? 'alt' : 'main'
+const langDot: Record<string, string> = {
+  TypeScript: 'var(--acc2)',
+  Rust: 'var(--amber)',
+  Java: 'var(--amber)',
+  'Claude Code': 'var(--acc)',
+}
+---
+
+<a
+  href={p.url}
+  class="card project"
+  data-category={p.category}
+  data-rank-popular={p.rank.popular}
+  data-rank-recent={p.rank.recent}
+  style={`order: ${p.rank.popular}`}
+>
+  <div class="top">
+    <span class="rank">#{String(p.rank.popular).padStart(2, '0')}</span>
+    <span class="badges">
+      {p.isNew && <span class="badge-new">NEW</span>}
+      <span class:list={['cat', tone]}>{CATEGORIES[p.category].toUpperCase()}</span>
+    </span>
+  </div>
+  <div>
+    <h3 class="name">{p.name}</h3>
+    <p class="desc">{p.description}</p>
+  </div>
+  <div class="grow"></div>
+  <div class="meta">
+    <span class="stars">
+      <svg
+        width="15"
+        height="15"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path>
+      </svg>
+      <span class="visually-hidden">stars:</span>
+      {p.starsLabel}
+    </span>
+    <span class="lang">
+      <span class="dot" style={`background: ${langDot[p.language] ?? 'var(--muted)'}`}></span>
+      {p.language}
+    </span>
+    <span class="muted">{p.updatedLabel}</span>
+  </div>
+  <div class="foot">
+    <div class="tags">
+      {p.tags.map(t => (
+        <span class="tag">{t}</span>
+      ))}
+    </div>
+    <span class="inspect">&gt; inspect</span>
+  </div>
+</a>
+
+<style>
+  .project {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px;
+    min-height: 230px;
+  }
+
+  .project[hidden] {
+    display: none;
+  }
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: var(--mono);
+  }
+
+  .rank {
+    font: 700 13px var(--mono);
+    color: var(--muted);
+  }
+
+  .badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cat {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font: 700 11px var(--mono);
+  }
+
+  .cat.main {
+    background: var(--acc-soft);
+    color: var(--acc);
+  }
+
+  .cat.alt {
+    background: var(--acc2-soft);
+    color: var(--acc2);
+  }
+
+  .name {
+    margin: 0;
+    font: 700 21px var(--mono);
+    letter-spacing: -0.02em;
+  }
+
+  .desc {
+    margin: 10px 0 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  .grow {
+    flex-grow: 1;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    font: 500 13px var(--mono);
+  }
+
+  .stars,
+  .lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .lang {
+    color: var(--muted);
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9px;
+  }
+
+  .foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--surface2);
+    font: 500 12px var(--mono);
+    color: var(--muted);
+  }
+
+  .inspect {
+    font: 500 12px var(--mono);
+    color: var(--acc);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition:
+      opacity 0.25s,
+      transform 0.25s;
+  }
+
+  .project:hover .inspect,
+  .project:focus-visible .inspect {
+    opacity: 1;
+    transform: none;
+  }
+</style>

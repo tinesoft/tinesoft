@@ -1,0 +1,32 @@
+---
+interface Props {
+  module: string
+  title: string
+}
+const { module, title } = Astro.props
+---
+
+<div class="module">
+  &gt; {module}
+  <span class="caret"></span>
+</div>
+<h2 class="heading glitch">{title}</h2>
+
+<style>
+  .module {
+    font: 500 13px var(--mono);
+    color: var(--acc);
+  }
+
+  .heading {
+    margin: 10px 0 0;
+    font: 700 44px / 1.1 var(--display);
+    letter-spacing: -0.03em;
+  }
+
+  @media (max-width: 560px) {
+    .heading {
+      font-size: 34px;
+    }
+  }
+</style>

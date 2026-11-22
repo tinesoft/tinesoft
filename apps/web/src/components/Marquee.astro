@@ -1,0 +1,50 @@
+---
+interface Props {
+  items: string[]
+}
+const { items } = Astro.props
+const loop = [...items, ...items]
+---
+
+<div class="strip" aria-hidden="true">
+  <div class="track">
+    {loop.map(m => (
+      <span class="item">
+        {m}
+        <span class="accent">◆</span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .strip {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .track {
+    display: flex;
+    width: max-content;
+    gap: 44px;
+    padding: 16px 0;
+    font: 14px var(--mono);
+    color: var(--muted);
+    animation: marquee 36s linear infinite;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 44px;
+    white-space: nowrap;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>
