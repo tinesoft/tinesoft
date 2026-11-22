@@ -1,0 +1,2 @@
+echo "Merge commits are not allowed: history is linear. Rebase onto the target, then fast-forward (git merge --ff-only)." >&2
+exit 1

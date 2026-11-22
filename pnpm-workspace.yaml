@@ -1,0 +1,7 @@
+packages:
+  - apps/*
+
+allowBuilds:
+  nx: true
+  esbuild: true
+  sharp: true

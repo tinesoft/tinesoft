@@ -1,0 +1,8 @@
+pnpm-lock.yaml
+.nx
+.astro
+dist
+apps/web/src/data/github.json
+
+# The GitHub profile README keeps its own hand-made layout.
+/README.md
