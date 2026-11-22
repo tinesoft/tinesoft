@@ -36,4 +36,4 @@ The Git hooks run on every commit:
 
 ## Deployment
 
-`.github/workflows/deploy.yml` syncs GitHub data, builds and publishes to GitHub Pages on every push to `main`, daily at 05:17 UTC, and on demand. `apps/web/public/CNAME` points Pages at `tinesoft.com`.
+`.github/workflows/deploy.yml` syncs GitHub data, builds and publishes to GitHub Pages on every push to `main`, daily at 06:00 UTC, and on demand. `apps/web/public/CNAME` points Pages at `tinesoft.com`.
