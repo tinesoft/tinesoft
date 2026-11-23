@@ -1,7 +1,7 @@
 // Offline support: pages are network-first (fresh after each daily build), everything else
 // is cache-first, since Astro fingerprints its assets.
 const CACHE = 'tinesoft-v1'
-const SHELL = ['/', '/manifest.webmanifest', '/icon.svg', '/favicon.svg']
+const SHELL = ['/', '/manifest.webmanifest', '/icon.svg', '/favicon.svg', '/favicon-terracotta.svg']
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)))

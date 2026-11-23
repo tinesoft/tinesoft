@@ -53,8 +53,17 @@ systemLight.addEventListener('change', () => {
   if (!stored(KEY.theme)) applyTheme(systemTheme())
 })
 
+// The tab icon follows the accent: favicon.svg is mint, favicon-terracotta.svg terracotta.
+function applyFavicon(accent: Accent): void {
+  const icon = document.querySelector<HTMLLinkElement>('link[rel="icon"]')
+  if (!icon) return
+  const file = accent === 'terracotta' ? 'favicon-terracotta.svg' : 'favicon.svg'
+  icon.href = icon.href.replace(/favicon(-terracotta)?\.svg$/, file)
+}
+
 export function setAccent(accent: Accent): void {
   root.dataset.accent = accent
+  applyFavicon(accent)
   save(KEY.accent, accent)
   listeners.forEach(fn => fn())
 }
