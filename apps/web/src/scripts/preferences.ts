@@ -1,6 +1,8 @@
 export type Theme = 'dark' | 'light'
 export type Accent = 'mint' | 'terracotta'
 
+// The inline script in src/layouts/Base.astro repeats the storage keys, default accent and
+// favicon files to apply them before first paint: change both together.
 const KEY = { theme: 'tinesoft:theme', accent: 'tinesoft:accent' } as const
 const root = document.documentElement
 

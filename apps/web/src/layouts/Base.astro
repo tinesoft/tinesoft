@@ -31,6 +31,8 @@ const base = import.meta.env.BASE_URL
     <link rel="apple-touch-icon" href={`${base}icon.svg`} />
     <script is:inline>
       // Before first paint: a stored choice wins, otherwise follow the system theme.
+      // An inline script cannot import, so this repeats src/scripts/preferences.ts (storage
+      // keys, default accent, favicon files): change both together.
       ;(() => {
         const d = document.documentElement
         let stored = {}
