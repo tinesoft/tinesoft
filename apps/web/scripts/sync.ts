@@ -47,26 +47,31 @@ interface ApiRepo {
 }
 
 async function repos(): Promise<Repo[]> {
-  const all: ApiRepo[] = []
-  for (let page = 1; ; page++) {
-    const batch = await get<ApiRepo[]>(
-      `/users/${GITHUB_USER}/repos?type=owner&per_page=100&page=${page}`,
+  const { public_repos: publicRepos } = await get<{ public_repos: number }>(
+    `/users/${GITHUB_USER}/`,
+  )
+  const pages = Math.ceil(publicRepos / 100)
+
+  return (
+    await Promise.all(
+      Array.from({ length: pages }, (_, i) =>
+        get<ApiRepo[]>(`/users/${GITHUB_USER}/repos?type=owner&per_page=100&page=${i + 1}`),
+      ),
     )
-    all.push(...batch)
-    if (batch.length < 100) break
-  }
-  return all.map(r => ({
-    name: r.name,
-    description: r.description,
-    url: r.html_url,
-    stars: r.stargazers_count,
-    language: r.language,
-    topics: r.topics ?? [],
-    fork: r.fork,
-    archived: r.archived,
-    createdAt: r.created_at,
-    pushedAt: r.pushed_at,
-  }))
+  )
+    .flat()
+    .map(repo => ({
+      name: repo.name,
+      description: repo.description,
+      url: repo.html_url,
+      stars: repo.stargazers_count,
+      language: repo.language,
+      topics: repo.topics ?? [],
+      fork: repo.fork,
+      archived: repo.archived,
+      createdAt: repo.created_at,
+      pushedAt: repo.pushed_at,
+    }))
 }
 
 interface ApiEvent {
